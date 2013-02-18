@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<project name="hw4" default="run-preview" basedir=".">
+
+	<property name="src" value="src" />
+	<property name="target" value="classes" />
+	<property name="sdk.jars.deps" value="../mturk-api/lib/third-party" />
+	<property name="sdk.jars" value="../mturk-api/lib" />
+
+	<path id="sdk.jars.deps">
+		<!-- Make sure Xerces comes before jaxme. -->
+		<fileset dir="${sdk.jars.deps}" includes="xerces*/*.jar" />
+		<fileset dir="${sdk.jars.deps}" includes="**/*.jar" excludes="xerces*/*.jar" />
+	</path>
+	
+	<path id="sdk.jars">
+		<fileset dir="${sdk.jars}" includes="*.jar" />
+	</path>
+	
+	<path id="classpath.runtime">
+		<path refid="sdk.jars" />
+		<path refid="sdk.jars.deps" />
+		<path location="${target}" />
+	</path>
+	
+	<target name="compile">	
+		<mkdir dir="${target}"/>
+		<echo message="Compiling sources"/>
+		<javac srcdir="${src}" destdir="${target}" source="1.7" target="1.7" debug="on">
+			<classpath refid="sdk.jars.deps" />
+			<classpath refid="sdk.jars" />
+		</javac>
+	</target>
+	
+	<target name="run-preview" depends="compile">
+		<echo message="Running preview"/>
+		<java dir="target" classname="edu.illinois.cs565.hw4.ImageKeywords">
+			<arg line="test.html" />
+			<classpath refid="classpath.runtime" />
+		</java>
+	</target>
+	
+</project>
