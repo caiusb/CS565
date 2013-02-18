@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="/mturk-api/lib/aws-mturk-dataschema.jar"/>
+	<classpathentry kind="lib" path="/mturk-api/lib/aws-mturk-wsdl.jar"/>
+	<classpathentry kind="lib" path="/mturk-api/lib/java-aws-mturk.jar"/>
+	<classpathentry kind="lib" path="/Users/caius/uiuc/classes_taken/cs565/workspace/mturk-api/lib/third-party"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
