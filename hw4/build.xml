@@ -34,7 +34,6 @@
 	<target name="run-preview" depends="compile">
 		<echo message="Running preview"/>
 		<java dir="target" classname="edu.illinois.cs565.hw4.ImageKeywords">
-			<arg line="test.html" />
 			<classpath refid="classpath.runtime" />
 		</java>
 	</target>
