@@ -2,3 +2,10 @@
 *.swp
 .metadata/
 mturk-api/build
+mturk-api/.classpath
+
+mturk-api/.project
+
+*.log
+
+*.1
