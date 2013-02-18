@@ -25,6 +25,10 @@
     </QuestionContent>
     <AnswerSpecification>
     	<FreeTextAnswer>
+    		<Constraints>
+  				<Length minLength="3" />
+  				<AnswerFormatRegex regex="*[a-z]" errorText="Please input only letters" flags="i" />
+  			</Constraints>
   			<NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>
     	</FreeTextAnswer>
     </AnswerSpecification>
@@ -39,6 +43,10 @@
     </QuestionContent>
     <AnswerSpecification>
     	<FreeTextAnswer>
+  			<Constraints>
+  				<Length minLength="3" />
+  				<AnswerFormatRegex regex="*[a-z]" errorText="Please input only letters" flags="i" />
+  			</Constraints>
   			<NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>
     	</FreeTextAnswer>
     </AnswerSpecification>
@@ -53,6 +61,10 @@
     </QuestionContent>
     <AnswerSpecification>
     	<FreeTextAnswer>
+    		<Constraints>
+  				<Length minLength="3" />
+  				<AnswerFormatRegex regex="*[a-z]" errorText="Please input only letters" flags="i" />
+  			</Constraints>
   			<NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>
     	</FreeTextAnswer>
     </AnswerSpecification>
