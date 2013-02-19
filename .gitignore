@@ -9,3 +9,7 @@ mturk-api/.project
 *.log
 
 *.1
+
+*.success
+
+*.results
