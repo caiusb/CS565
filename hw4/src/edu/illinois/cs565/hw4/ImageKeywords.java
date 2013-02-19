@@ -19,8 +19,8 @@ public class ImageKeywords {
 	private RequesterService service;
 
 	private String rootDir = "src/edu/illinois/cs565/hw4";
-	private String questionFile = rootDir + "/best_image.question";
-	private String propertiesFile = rootDir + "/best_image.properties";
+	private String questionFile = rootDir + "/image_keywords.question";
+	private String propertiesFile = rootDir + "/image_keywords.properties";
 
 	/**
 	 * Constructor
