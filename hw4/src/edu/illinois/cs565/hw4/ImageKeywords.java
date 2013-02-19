@@ -1,5 +1,11 @@
 package edu.illinois.cs565.hw4;
 
+import java.io.BufferedOutputStream;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+
 import com.amazonaws.mturk.addon.HITProperties;
 import com.amazonaws.mturk.addon.HITQuestion;
 import com.amazonaws.mturk.addon.QAPValidator;
@@ -37,6 +43,7 @@ public class ImageKeywords {
 		return balance > 0;
 	}
 
+	@SuppressWarnings("resource")
 	public void createBestImage() {
 		try {
 
@@ -63,6 +70,14 @@ public class ImageKeywords {
 
 			System.out.println(service.getWebsiteURL()
 					+ "/mturk/preview?groupId=" + hit.getHITTypeId());
+
+			File successFile = new File("hw4.success");
+			BufferedWriter writer = new BufferedWriter(new FileWriter(
+					successFile));
+			writer.write("hitid\thittypeid\n");
+			writer.write(hit.getHITId() + "\t" + hit.getHITTypeId() + "\n");
+			writer.close();
+
 		} catch (ValidationException e) {
 			// The validation exceptions will provide good insight into where in
 			// the QAP has errors.
