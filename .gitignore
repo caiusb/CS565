@@ -13,3 +13,9 @@ mturk-api/.project
 *.success
 
 *.results
+
+*.aux
+
+*.gz
+
+*.pdf
