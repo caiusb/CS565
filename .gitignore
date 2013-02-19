@@ -3,7 +3,7 @@
 .metadata/
 mturk-api/build
 mturk-api/.classpath
-hw4/bin/
+/hw4/bin/
 mturk-api/.project
 
 *.log
