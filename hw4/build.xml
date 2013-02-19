@@ -38,4 +38,12 @@
 		</java>
 	</target>
 	
+	<target name="review" depends="compile">
+		<echo message="Review HITs" />
+		<java dir="target" classname="edu.illinois.cs565.hw4.Reviewer">
+			<arg line="hw4.success hw4.results"/>
+			<classpath refid="classpath.runtime" />
+		</java>
+	</target>
+	
 </project>
