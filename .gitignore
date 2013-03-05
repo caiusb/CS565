@@ -19,3 +19,9 @@ mturk-api/.project
 *.gz
 
 *.pdf
+
+*.out
+
+*.blg
+
+*.bbl
