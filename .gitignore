@@ -1,6 +1,5 @@
 *.class
 *.swp
-.metadata/
 mturk-api/build
 mturk-api/.classpath
 /hw4/bin/
