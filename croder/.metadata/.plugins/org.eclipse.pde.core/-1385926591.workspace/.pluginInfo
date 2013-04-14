@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<map>
-	<bundle bundleID="545" class="edu.illinois.codeselector.Activator" localization="OSGI-INF/l10n/bundle" name="CodeSelector" project="CodeSelector"/>
-</map>

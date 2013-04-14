@@ -1,8 +1,9 @@
 *.class
 *.swp
 
-croder/
-!croder/CodeSelector
+croder/.metadata/
+croder/org.eclipse*
+
 
 mturk-api/build
 mturk-api/.classpath
