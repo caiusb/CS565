@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="edu.illinois.croder.category"
+            name="Croder">
+      </category>
+      <command
+            categoryId="edu.illinois.croder.category"
+            defaultHandler="edu.illinois.croder.wizard.ShowCommandHandler"
+            id="edu.illinois.edu.croder.wizard.showCommand"
+            name="Post Code">
+      </command>
+   </extension>
+   <extension
+         name="Croder"
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               commandId="edu.illinois.edu.croder.wizard.showCommand"
+               id="edu.illinois.croder.croderMenu"
+               label="Croder"
+               tooltip="Launch Croder">
+            <command
+                  commandId="edu.illinois.edu.croder.wizard.showCommand"
+                  style="push">
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="edu.illinois.croder.wizardToolbar">
+            <command
+                  commandId="edu.illinois.edu.croder.wizard.showCommand"
+                  icon="icons/sample.gif"
+                  style="push">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+
+</plugin>
