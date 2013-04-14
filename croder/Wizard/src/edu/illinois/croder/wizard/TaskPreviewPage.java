@@ -8,9 +8,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-public class CodeSelectionPage extends WizardPage {
+public class TaskPreviewPage extends WizardPage {
 
-	protected CodeSelectionPage() {
+	protected TaskPreviewPage() {
 		super("Code Selection Page");
 		setTitle("Task preview");
 		setDescription("Please preview the task");
