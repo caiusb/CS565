@@ -33,7 +33,10 @@ public class CodeSelectorView extends ViewPart {
 	private ListViewer viewer;
 	private Action doubleClickAction;
 
+	private ArrayList<Snippet> input;
+
 	public CodeSelectorView() {
+		input = new ArrayList<Snippet>();
 	}
 
 	/**
@@ -44,7 +47,7 @@ public class CodeSelectorView extends ViewPart {
 		viewer = new ListViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		viewer.setContentProvider(new ViewContentProvider());
 		viewer.setLabelProvider(new LabelProvider());
-		viewer.setInput(new ArrayList<Snippet>());
+		viewer.setInput(input);
 
 		// Create the help context id for the viewer's control
 		makeActions();
