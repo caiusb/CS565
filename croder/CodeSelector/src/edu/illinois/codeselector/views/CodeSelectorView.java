@@ -42,12 +42,10 @@ public class CodeSelectorView extends ViewPart {
 	 * it.
 	 */
 	public void createPartControl(Composite parent) {
-		viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-		drillDownAdapter = new DrillDownAdapter(viewer);
+		viewer = new ListViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		viewer.setContentProvider(new ViewContentProvider());
-		viewer.setLabelProvider(new ViewLabelProvider());
-		viewer.setSorter(new NameSorter());
-		viewer.setInput(getViewSite());
+		viewer.setLabelProvider(new LabelProvider());
+		viewer.setInput(new ArrayList<Snippet>());
 
 		// Create the help context id for the viewer's control
 		PlatformUI.getWorkbench().getHelpSystem()
