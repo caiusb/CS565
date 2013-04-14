@@ -1,5 +1,9 @@
 *.class
 *.swp
+
+croder/
+!croder/CodeSelector
+
 mturk-api/build
 mturk-api/.classpath
 /hw4/bin/
