@@ -47,7 +47,7 @@ public class CodeSelectorView extends ViewPart {
 	public void createPartControl(Composite parent) {
 		viewer = new ListViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		viewer.setContentProvider(new ViewContentProvider());
-		viewer.setLabelProvider(new LabelProvider());
+		viewer.setLabelProvider(new ViewLabelProvider());
 		viewer.setInput(SnippetService.getInstance().getSnippets());
 
 		// Create the help context id for the viewer's control
