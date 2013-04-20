@@ -21,12 +21,17 @@ public class AddSnippetCommand extends AbstractHandler {
 		ISelectionService ss = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService();
 		ISelection selection = ss.getSelection();
 		
+		if (selection == null){
+			displayMessage("No selection detected");
+			return null;
+		}
+			
 		try {
 			Object selectionObject = getSelectionObject(selection);
 			displayMessage(selectionObject.getClass().getName() + "\n" + selectionObject.toString());
 			handleSelectionObject(selectionObject);
 		} catch (UnknownSelectionException e) {
-			displayMessage("Cannot handle exception of type " + e.getMessage());
+			displayMessage("Cannot handle selection of type " + e.getMessage());
 		}
 		
 		return null;
