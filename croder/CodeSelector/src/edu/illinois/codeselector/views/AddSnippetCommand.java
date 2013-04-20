@@ -38,7 +38,7 @@ public class AddSnippetCommand extends AbstractHandler {
 		return null;
 	}
 
-	private void handleSelectionObject(Object selectionObject) {
+	private void handleSelectionObject(Object selectionObject) throws UnknownSelectionException {
 		SnippetService.getInstance().addSnipetForObject(selectionObject);
 	}
 
@@ -62,5 +62,4 @@ public class AddSnippetCommand extends AbstractHandler {
 		MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
 				"CodeSelector", message);
 	}
-
 }
