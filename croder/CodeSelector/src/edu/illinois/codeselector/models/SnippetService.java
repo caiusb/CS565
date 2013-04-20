@@ -36,6 +36,10 @@ public class SnippetService {
 	}
 
 	private Snippet constructSnippet(Object candidateSnippet) {
-		return new Snippet("hello");
+		return new Snippet(candidateSnippet);
+	}
+
+	public List<Snippet> getSnippets() {
+		return snippets;
 	}
 }

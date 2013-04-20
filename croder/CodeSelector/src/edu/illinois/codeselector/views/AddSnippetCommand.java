@@ -11,6 +11,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.PlatformUI;
 
+import edu.illinois.codeselector.models.SnippetService;
 import edu.illinois.codeselector.views.exceptions.UnknownSelectionException;
 
 public class AddSnippetCommand extends AbstractHandler {
@@ -28,7 +29,7 @@ public class AddSnippetCommand extends AbstractHandler {
 			
 		try {
 			Object selectionObject = getSelectionObject(selection);
-			displayMessage(selectionObject.getClass().getName() + "\n" + selectionObject.toString());
+			//displayMessage(selectionObject.getClass().getName() + "\n" + selectionObject.toString());
 			handleSelectionObject(selectionObject);
 		} catch (UnknownSelectionException e) {
 			displayMessage("Cannot handle selection of type " + e.getMessage());
@@ -38,8 +39,7 @@ public class AddSnippetCommand extends AbstractHandler {
 	}
 
 	private void handleSelectionObject(Object selectionObject) {
-		// TODO Auto-generated method stub
-		
+		SnippetService.getInstance().addSnipetForObject(selectionObject);
 	}
 
 	private Object getSelectionObject(ISelection selection) throws UnknownSelectionException {

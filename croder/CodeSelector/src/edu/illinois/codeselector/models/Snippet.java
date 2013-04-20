@@ -12,4 +12,8 @@ public class Snippet {
 		return snippet.toString();
 	}
 	
+	public String getCode(){
+		return snippet.toString();
+	}
+	
 }

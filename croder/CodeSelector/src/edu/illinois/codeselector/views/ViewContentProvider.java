@@ -1,6 +1,6 @@
 package edu.illinois.codeselector.views;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
@@ -23,12 +23,11 @@ public class ViewContentProvider implements IStructuredContentProvider {
 
 	@Override
 	public Object[] getElements(Object inputElement) {
-		if (inputElement instanceof ArrayList<?>) {
-			ArrayList<Snippet> snippets = ((ArrayList<Snippet>) inputElement);
+		if (inputElement instanceof List<?>) {
+			List<Snippet> snippets = ((List<Snippet>) inputElement);
 			return snippets.toArray(new Snippet[snippets.size()]);
 		}
 
 		return new Snippet[0];
 	}
-
 }

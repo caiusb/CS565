@@ -18,10 +18,11 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IWorkbenchActionConstants;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
 import edu.illinois.codeselector.models.Snippet;
+import edu.illinois.codeselector.models.SnippetListener;
+import edu.illinois.codeselector.models.SnippetService;
 
 public class CodeSelectorView extends ViewPart {
 
@@ -47,12 +48,20 @@ public class CodeSelectorView extends ViewPart {
 		viewer = new ListViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		viewer.setContentProvider(new ViewContentProvider());
 		viewer.setLabelProvider(new LabelProvider());
-		viewer.setInput(input);
+		viewer.setInput(SnippetService.getInstance().getSnippets());
 
 		// Create the help context id for the viewer's control
 		makeActions();
 		hookContextMenu();
 		hookDoubleClickAction();
+		
+		SnippetService.getInstance().registerSnippetListener(new SnippetListener() {
+			
+			@Override
+			public void update() {
+				viewer.setInput(SnippetService.getInstance().getSnippets());
+			}
+		});
 	}
 
 	private void hookContextMenu() {
