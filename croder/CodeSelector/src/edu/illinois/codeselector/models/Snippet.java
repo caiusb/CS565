@@ -7,7 +7,7 @@ import edu.illinois.codeselector.views.exceptions.UnknownSelectionException;
 public class Snippet {
 	private Object snippet;
 	
-	private Snippet(Object snippet){
+	protected Snippet(Object snippet){
 		this.snippet = snippet;
 	}
 	
@@ -17,7 +17,7 @@ public class Snippet {
 	
 	public static Snippet constructSnippetForTarget(Object snippetTarget) throws UnknownSelectionException{
 		if (snippetTarget instanceof IJavaElement){
-			return new Snippet(snippetTarget);
+			return new JavaElementSnippet((IJavaElement)snippetTarget);
 		}
 		else if (snippetTarget instanceof String){
 			return new Snippet(snippetTarget);
