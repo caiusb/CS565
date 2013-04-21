@@ -9,17 +9,14 @@ import org.eclipse.jdt.internal.core.JavaElement;
 
 public class JavaElementSnippet extends Snippet {
 
-	private IJavaElement javaElement;
-
 	public JavaElementSnippet(IJavaElement snippetTarget) {
 		super(snippetTarget);
-		this.javaElement = snippetTarget;
 	}
 
 	@Override
 	public String getCode() {
 		LinkedList<ISourceReference> sourceReferences = new LinkedList<ISourceReference>();
-		retrieveSourceReferences(javaElement, sourceReferences);
+		retrieveSourceReferencesFor(super.getJavaElementForSnippet(), sourceReferences);
 
 		return convertSourceReferencesToSourceCode(sourceReferences);
 	}
@@ -36,14 +33,14 @@ public class JavaElementSnippet extends Snippet {
 					sb.append("\n");
 				}
 			} catch (JavaModelException e) {
-				System.err.println(iSourceReference.getClass());
+				System.err.println("Cannot get source code for " + iSourceReference.getClass());
 			}
 		}
 
 		return sb.toString();
 	}
 
-	private void retrieveSourceReferences(IJavaElement javaElement, LinkedList<ISourceReference> sourceReferences) {
+	private void retrieveSourceReferencesFor(IJavaElement javaElement, LinkedList<ISourceReference> sourceReferences) {
 		JavaElement elem = (JavaElement) javaElement;
 
 		if (elem instanceof ISourceReference) {
@@ -56,10 +53,10 @@ public class JavaElementSnippet extends Snippet {
 	private void collectFromChildren(JavaElement elem, LinkedList<ISourceReference> sourceReferences) {
 		try {
 			for (IJavaElement child : elem.getChildren()) {
-				retrieveSourceReferences(child, sourceReferences);
+				retrieveSourceReferencesFor(child, sourceReferences);
 			}
 		} catch (JavaModelException e) {
+			System.err.println("cannot get children for " + elem);
 		}
 	}
-
 }
