@@ -20,9 +20,9 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.part.ViewPart;
 
-import edu.illinois.codeselector.models.Snippet;
 import edu.illinois.codeselector.models.SnippetListener;
 import edu.illinois.codeselector.models.SnippetService;
+import edu.illinois.codeselector.models.snippets.AbstractSnippet;
 
 public class CodeSelectorView extends ViewPart {
 
@@ -34,10 +34,10 @@ public class CodeSelectorView extends ViewPart {
 	private ListViewer viewer;
 	private Action doubleClickAction;
 
-	private ArrayList<Snippet> input;
+	private ArrayList<AbstractSnippet> input;
 
 	public CodeSelectorView() {
-		input = new ArrayList<Snippet>();
+		input = new ArrayList<AbstractSnippet>();
 	}
 
 	/**
