@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="CodeSelectorCategory"
+            id="CodeSelector">
+      </category>
+      <view
+            name="CodeSelector"
+            icon="icons/sample.gif"
+            category="CodeSelector"
+            class="edu.illinois.codeselector.views.CodeSelectorView"
+            id="edu.illinois.codeselector.views.CodeSelectorView">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.ProblemView"
+               relationship="right"
+               id="edu.illinois.codeselector.views.CodeSelectorView">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.dropActions">
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            category="CodeSelector.addSnippetCategory"
+            categoryId="CodeSelector.addSnippetCategory"
+            defaultHandler="edu.illinois.codeselector.views.AddSnippetCommand"
+            id="CodeSelector.addSnippetCommand"
+            name="AddSnippetCommand">
+      </command>
+   </extension>
+   
+    <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+         locationURI=
+         "popup:org.eclipse.ui.popup.any?after=additions">
+         <command
+               commandId="CodeSelector.addSnippetCommand"
+               label="Run mycommand"
+               tooltip="Add item as code review snippet">
+         </command>
+      </menuContribution>
+   </extension>
+   
+
+</plugin>
