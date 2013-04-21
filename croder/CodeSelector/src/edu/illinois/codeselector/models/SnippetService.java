@@ -3,6 +3,8 @@ package edu.illinois.codeselector.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.jdt.core.ICompilationUnit;
+
 import edu.illinois.codeselector.views.exceptions.UnknownSelectionException;
 
 public class SnippetService {
@@ -32,13 +34,10 @@ public class SnippetService {
 		}
 	}
 
-	public void addSnipetForObject(Object candidateSnippet) throws UnknownSelectionException {
-		snippets.add(constructSnippet(candidateSnippet));
+	public void addSnipetForObject(Object snippetTarget, ICompilationUnit activeICU) throws UnknownSelectionException {
+		Snippet snippet = Snippet.constructSnippetForTarget(snippetTarget, activeICU);
+		snippets.add(snippet);
 		notifySnippetListeners();
-	}
-
-	private Snippet constructSnippet(Object snippetTarget) throws UnknownSelectionException {
-		return Snippet.constructSnippetForTarget(snippetTarget);
 	}
 
 	public List<Snippet> getSnippets() {
