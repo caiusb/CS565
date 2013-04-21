@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 
+import edu.illinois.codeselector.models.snippets.AbstractSnippet;
 import edu.illinois.codeselector.views.exceptions.UnknownSelectionException;
 
 public class SnippetService {
@@ -17,11 +18,11 @@ public class SnippetService {
 	}
 
 	private List<SnippetListener> snippetListeners;
-	private ArrayList<Snippet> snippets;
+	private ArrayList<AbstractSnippet> snippets;
 
 	private SnippetService() {
 		snippetListeners = new ArrayList<SnippetListener>();
-		snippets = new ArrayList<Snippet>();
+		snippets = new ArrayList<AbstractSnippet>();
 	}
 
 	public void registerSnippetListener(SnippetListener listener) {
@@ -35,12 +36,12 @@ public class SnippetService {
 	}
 
 	public void addSnipetForObject(Object snippetTarget, ICompilationUnit activeICU) throws UnknownSelectionException {
-		Snippet snippet = Snippet.constructSnippetForTarget(snippetTarget, activeICU);
+		AbstractSnippet snippet = AbstractSnippet.constructSnippetForTarget(snippetTarget, activeICU);
 		snippets.add(snippet);
 		notifySnippetListeners();
 	}
 
-	public List<Snippet> getSnippets() {
+	public List<AbstractSnippet> getSnippets() {
 		return snippets;
 	}
 }

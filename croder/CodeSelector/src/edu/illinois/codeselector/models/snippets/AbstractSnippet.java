@@ -1,14 +1,14 @@
-package edu.illinois.codeselector.models;
+package edu.illinois.codeselector.models.snippets;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IJavaElement;
 
 import edu.illinois.codeselector.views.exceptions.UnknownSelectionException;
 
-public abstract class Snippet {
+public abstract class AbstractSnippet {
 	private IJavaElement javaElementForSnippet;
 	
-	protected Snippet(IJavaElement javaElementForSnippet){
+	protected AbstractSnippet(IJavaElement javaElementForSnippet){
 		this.javaElementForSnippet = javaElementForSnippet;
 	}
 	
@@ -19,7 +19,7 @@ public abstract class Snippet {
 		return javaElementForSnippet;
 	}
 	
-	public static Snippet constructSnippetForTarget(Object snippetTarget, ICompilationUnit activeICU) throws UnknownSelectionException{
+	public static AbstractSnippet constructSnippetForTarget(Object snippetTarget, ICompilationUnit activeICU) throws UnknownSelectionException{
 		if (snippetTarget instanceof IJavaElement){
 			return new JavaElementSnippet((IJavaElement)snippetTarget);
 		}

@@ -1,8 +1,8 @@
-package edu.illinois.codeselector.models;
+package edu.illinois.codeselector.models.snippets;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 
-public class StringSnippet extends Snippet {
+public class StringSnippet extends AbstractSnippet {
 
 	private String codeSnippet;
 

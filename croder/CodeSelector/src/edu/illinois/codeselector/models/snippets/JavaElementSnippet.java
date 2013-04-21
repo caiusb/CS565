@@ -1,4 +1,4 @@
-package edu.illinois.codeselector.models;
+package edu.illinois.codeselector.models.snippets;
 
 import java.util.LinkedList;
 
@@ -7,7 +7,7 @@ import org.eclipse.jdt.core.ISourceReference;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.internal.core.JavaElement;
 
-public class JavaElementSnippet extends Snippet {
+public class JavaElementSnippet extends AbstractSnippet {
 
 	public JavaElementSnippet(IJavaElement snippetTarget) {
 		super(snippetTarget);
