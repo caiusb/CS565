@@ -49,7 +49,7 @@
          "popup:org.eclipse.ui.popup.any?after=additions">
          <command
                commandId="CodeSelector.addSnippetCommand"
-               label="Run mycommand"
+               label="Add to code review"
                tooltip="Add item as code review snippet">
          </command>
       </menuContribution>
