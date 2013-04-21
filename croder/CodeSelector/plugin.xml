@@ -29,10 +29,31 @@
       </perspectiveExtension>
    </extension>
    <extension
-         point="org.eclipse.help.contexts">
-      <contexts
-            file="contexts.xml">
-      </contexts>
+         point="org.eclipse.ui.dropActions">
    </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            category="CodeSelector.addSnippetCategory"
+            categoryId="CodeSelector.addSnippetCategory"
+            defaultHandler="edu.illinois.codeselector.views.AddSnippetCommand"
+            id="CodeSelector.addSnippetCommand"
+            name="AddSnippetCommand">
+      </command>
+   </extension>
+   
+    <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+         locationURI=
+         "popup:org.eclipse.ui.popup.any?after=additions">
+         <command
+               commandId="CodeSelector.addSnippetCommand"
+               label="Run mycommand"
+               tooltip="Add item as code review snippet">
+         </command>
+      </menuContribution>
+   </extension>
+   
 
 </plugin>

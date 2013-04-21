@@ -1,5 +1,11 @@
 *.class
 *.swp
+
+croder/.metadata/
+croder/org.eclipse*
+runtime-EclipseApplication/
+
+
 mturk-api/build
 mturk-api/.classpath
 /hw4/bin/
