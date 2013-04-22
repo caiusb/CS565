@@ -9,6 +9,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+import edu.illinois.codeselector.models.SnippetService;
+
 public class TaskPreviewPage extends WizardPage {
 
 	protected TaskPreviewPage() {
@@ -33,9 +35,10 @@ public class TaskPreviewPage extends WizardPage {
 		Composite treeComposite = new Composite(codeHolderComposite, SWT.NONE);
 		treeComposite.setLayout(new GridLayout(1,true));
 		treeComposite.setLayoutData(new GridData(GridData.FILL_BOTH));
-		TreeViewer treeViewer = new TreeViewer(treeComposite);
+		TreeViewer treeViewer = new TreeViewer(treeComposite, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		treeViewer.setContentProvider(new SnippetContentProvider());
-//		treeViewer.setLabelProvider(new SnippetLabelProvider());
+		treeViewer.setLabelProvider(new SnippetLabelProvider());
+		treeViewer.setInput(SnippetService.getInstance());
 		
 		Composite codeDetailsComposite = new Composite(codeHolderComposite, SWT.NONE);
 		codeDetailsComposite.setLayout(new GridLayout(1, true));

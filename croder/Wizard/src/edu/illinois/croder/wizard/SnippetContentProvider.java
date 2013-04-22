@@ -1,7 +1,12 @@
 package edu.illinois.croder.wizard;
 
+import java.util.List;
+
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
+
+import edu.illinois.codeselector.models.SnippetService;
+import edu.illinois.codeselector.models.snippets.AbstractSnippet;
 
 public class SnippetContentProvider implements ITreeContentProvider {
 
@@ -19,11 +24,10 @@ public class SnippetContentProvider implements ITreeContentProvider {
 
 	@Override
 	public Object[] getElements(Object inputElement) {
-		// TODO Auto-generated method stub
-		Object elements[] = new Object[2];
-		elements[1] = "first";
-		elements[2] = "second";
-		return elements;
+		SnippetService snippetService = SnippetService.getInstance();
+		List<AbstractSnippet> snippets = snippetService.getSnippets();
+		
+		return snippets.toArray();
 	}
 
 	@Override
