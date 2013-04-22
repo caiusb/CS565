@@ -14,7 +14,7 @@ public class JavaElementSnippet extends Snippet {
 	}
 
 	@Override
-	public String getCode() {
+	public String computeCode() {
 		LinkedList<ISourceReference> sourceReferences = new LinkedList<ISourceReference>();
 		retrieveSourceReferencesFor(super.getJavaElementForSnippet(), sourceReferences);
 

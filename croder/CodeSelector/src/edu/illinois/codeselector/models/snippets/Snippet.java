@@ -11,6 +11,7 @@ import edu.illinois.codeselector.views.exceptions.UnknownSelectionException;
 public abstract class Snippet {
 	private IJavaElement javaElementForSnippet;
 	private String userComment;
+	private String code;
 	
 	protected Snippet(IJavaElement javaElementForSnippet){
 		this(javaElementForSnippet, "");
@@ -21,8 +22,21 @@ public abstract class Snippet {
 		this.userComment = userComment;
 	}
 	
+	
 	//TODO transform getCode to return a list of code snippets. Packages for example return several classes
-	public abstract String getCode();
+	public String getCode(){
+		if (code == null){
+			code = computeCode();
+		}
+		
+		return code;
+	}
+	
+	public void setCode(String newCode){
+		this.code = newCode;
+	}
+	
+	protected abstract String computeCode();
 	
 	public IJavaElement getJavaElementForSnippet(){
 		return javaElementForSnippet;
@@ -62,5 +76,4 @@ public abstract class Snippet {
 	public String getComment() {
 		return userComment;
 	}
-	
 }
