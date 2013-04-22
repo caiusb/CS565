@@ -1,6 +1,6 @@
 package edu.illinois.reviewbrowser.models;
 
-public interface SnippetListener {
+public interface ReviewListener {
 
 	void update();
 

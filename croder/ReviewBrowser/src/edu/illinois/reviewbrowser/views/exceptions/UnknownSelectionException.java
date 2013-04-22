@@ -1,6 +1,5 @@
 package edu.illinois.reviewbrowser.views.exceptions;
 
-
 public class UnknownSelectionException extends Exception {
 
 	/**

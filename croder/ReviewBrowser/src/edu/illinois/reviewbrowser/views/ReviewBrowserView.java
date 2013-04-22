@@ -1,7 +1,5 @@
 package edu.illinois.reviewbrowser.views;
 
-import java.util.ArrayList;
-
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -19,9 +17,8 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.part.ViewPart;
 
-import edu.illinois.reviewbrowser.models.SnippetListener;
-import edu.illinois.reviewbrowser.models.SnippetService;
-import edu.illinois.reviewbrowser.models.snippets.AbstractSnippet;
+import edu.illinois.reviewbrowser.models.ReviewListener;
+import edu.illinois.reviewbrowser.models.ReviewService;
 
 public class ReviewBrowserView extends ViewPart {
 
@@ -33,12 +30,6 @@ public class ReviewBrowserView extends ViewPart {
 	private ListViewer viewer;
 	private Action doubleClickAction;
 
-	private ArrayList<?> input;
-
-	public ReviewBrowserView() {
-		input = new ArrayList<AbstractSnippet>();
-	}
-
 	/**
 	 * This is a callback that will allow us to create the viewer and initialize
 	 * it.
@@ -47,20 +38,22 @@ public class ReviewBrowserView extends ViewPart {
 		viewer = new ListViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		viewer.setContentProvider(new ViewContentProvider());
 		viewer.setLabelProvider(new ViewLabelProvider());
-		viewer.setInput(SnippetService.getInstance().getSnippets());
+		viewer.setInput(ReviewService.getInstance().getReviews());
 
 		// Create the help context id for the viewer's control
 		makeActions();
 		hookContextMenu();
 		hookDoubleClickAction();
-		
-		SnippetService.getInstance().registerSnippetListener(new SnippetListener() {
-			
-			@Override
-			public void update() {
-				viewer.setInput(SnippetService.getInstance().getSnippets());
-			}
-		});
+
+		ReviewService.getInstance().registerReviewListener(
+				new ReviewListener() {
+
+					@Override
+					public void update() {
+						viewer.setInput(ReviewService.getInstance()
+								.getReviews());
+					}
+				});
 	}
 
 	private void hookContextMenu() {
