@@ -7,7 +7,7 @@ import org.eclipse.jdt.core.ISourceReference;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.internal.core.JavaElement;
 
-public class JavaElementSnippet extends AbstractSnippet {
+public class JavaElementSnippet extends Snippet {
 
 	public JavaElementSnippet(IJavaElement snippetTarget) {
 		super(snippetTarget);

@@ -5,7 +5,7 @@ import java.util.List;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
-import edu.illinois.codeselector.models.snippets.AbstractSnippet;
+import edu.illinois.codeselector.models.snippets.Snippet;
 
 public class ViewContentProvider implements IStructuredContentProvider {
 
@@ -24,10 +24,10 @@ public class ViewContentProvider implements IStructuredContentProvider {
 	@Override
 	public Object[] getElements(Object inputElement) {
 		if (inputElement instanceof List<?>) {
-			List<AbstractSnippet> snippets = ((List<AbstractSnippet>) inputElement);
-			return snippets.toArray(new AbstractSnippet[snippets.size()]);
+			List<Snippet> snippets = ((List<Snippet>) inputElement);
+			return snippets.toArray(new Snippet[snippets.size()]);
 		}
 
-		return new AbstractSnippet[0];
+		return new Snippet[0];
 	}
 }
