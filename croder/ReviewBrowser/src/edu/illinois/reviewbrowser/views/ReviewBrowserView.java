@@ -1,6 +1,5 @@
 package edu.illinois.reviewbrowser.views;
 
-import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
@@ -13,7 +12,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.part.ViewPart;
 
 import edu.illinois.reviewbrowser.models.Review;
@@ -28,7 +26,6 @@ public class ReviewBrowserView extends ViewPart {
 	public static final String ID = "edu.illinois.ReviewBrowser.views.ReviewBrowserView";
 
 	private ListViewer reviewViewer;
-	private Action doubleClickAction;
 
 	private TreeViewer commentViewer;
 
@@ -56,9 +53,10 @@ public class ReviewBrowserView extends ViewPart {
 	}
 
 	private void addCommentViewer(SashForm sash) {
-		commentViewer = new TreeViewer(sash, SWT.BORDER | SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-	    commentViewer.setContentProvider(new CommentViewerContentProvider());
-	    commentViewer.setLabelProvider(new LabelProvider());
+		commentViewer = new TreeViewer(sash, SWT.BORDER | SWT.MULTI
+				| SWT.H_SCROLL | SWT.V_SCROLL);
+		commentViewer.setContentProvider(new CommentViewerContentProvider());
+		commentViewer.setLabelProvider(new LabelProvider());
 	}
 
 	private void addReviewViewer(SashForm sash) {
@@ -69,12 +67,10 @@ public class ReviewBrowserView extends ViewPart {
 		reviewViewer.setInput(ReviewService.getInstance().getReviews());
 
 		// Create the help context id for the reviewViewer's control
-		makeActions();
 		hookDoubleClickAction();
 
 		ReviewService.getInstance().registerReviewListener(
 				new ReviewListener() {
-
 					@Override
 					public void update() {
 						reviewViewer.setInput(ReviewService.getInstance()
@@ -83,21 +79,14 @@ public class ReviewBrowserView extends ViewPart {
 				});
 	}
 
-	private void makeActions() {
-		doubleClickAction = new Action() {
-			public void run() {
-				ISelection selection = reviewViewer.getSelection();
-				Object obj = ((IStructuredSelection) selection)
-						.getFirstElement();
-				showMessage("Double-click detected on " + obj.toString());
-			}
-		};
-	}
-
 	private void hookDoubleClickAction() {
 		reviewViewer.addDoubleClickListener(new IDoubleClickListener() {
 			public void doubleClick(DoubleClickEvent event) {
-				doubleClickAction.run();
+				ISelection selection = reviewViewer.getSelection();
+				Review review = (Review) ((IStructuredSelection) selection)
+						.getFirstElement();
+
+				commentViewer.setInput(review.getComments());
 			}
 		});
 	}

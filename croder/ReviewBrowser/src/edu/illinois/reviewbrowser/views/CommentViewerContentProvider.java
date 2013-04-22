@@ -1,7 +1,11 @@
 package edu.illinois.reviewbrowser.views;
 
+import java.util.List;
+
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
+
+import edu.illinois.reviewbrowser.models.Comment;
 
 public class CommentViewerContentProvider implements ITreeContentProvider {
 
@@ -19,13 +23,19 @@ public class CommentViewerContentProvider implements ITreeContentProvider {
 
 	@Override
 	public Object[] getElements(Object inputElement) {
-		// TODO Auto-generated method stub
+		if (inputElement instanceof List){
+			return ((List)inputElement).toArray();
+		}
+		
 		return null;
 	}
 
 	@Override
 	public Object[] getChildren(Object parentElement) {
-		// TODO Auto-generated method stub
+		if (parentElement instanceof Comment){
+			return ((Comment)parentElement).getReplies().toArray();
+		}
+		
 		return null;
 	}
 
@@ -37,8 +47,7 @@ public class CommentViewerContentProvider implements ITreeContentProvider {
 
 	@Override
 	public boolean hasChildren(Object element) {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }
