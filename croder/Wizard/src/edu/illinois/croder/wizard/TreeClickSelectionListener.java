@@ -23,10 +23,10 @@ public class TreeClickSelectionListener implements ISelectionChangedListener {
 		Object eventSource = event.getSource();
 		if (!(eventSource instanceof TreeViewer))
 			return;
-
+		
 		Snippet selectedElement = (Snippet) ((IStructuredSelection) ((TreeViewer) eventSource)
 				.getSelection()).getFirstElement();
 		code.setText(selectedElement.getCode());
+		text.setText(selectedElement.getComment());
 	}
-
 }
