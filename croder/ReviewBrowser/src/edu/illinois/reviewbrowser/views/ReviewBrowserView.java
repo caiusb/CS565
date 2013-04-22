@@ -1,11 +1,12 @@
 package edu.illinois.reviewbrowser.views;
 
+import java.util.ArrayList;
+
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
@@ -56,14 +57,15 @@ public class ReviewBrowserView extends ViewPart {
 		commentViewer = new TreeViewer(sash, SWT.BORDER | SWT.MULTI
 				| SWT.H_SCROLL | SWT.V_SCROLL);
 		commentViewer.setContentProvider(new CommentViewerContentProvider());
-		commentViewer.setLabelProvider(new LabelProvider());
+		commentViewer.setLabelProvider(new CommentViewerLabelProvider());
+		commentViewer.setInput(new ArrayList<>());
 	}
 
 	private void addReviewViewer(SashForm sash) {
 		reviewViewer = new ListViewer(sash, SWT.BORDER | SWT.MULTI
 				| SWT.H_SCROLL | SWT.V_SCROLL);
-		reviewViewer.setContentProvider(new ViewContentProvider());
-		reviewViewer.setLabelProvider(new ViewLabelProvider());
+		reviewViewer.setContentProvider(new ReviewViewerContentProvider());
+		reviewViewer.setLabelProvider(new ReviewViewerLabelProvider());
 		reviewViewer.setInput(ReviewService.getInstance().getReviews());
 
 		// Create the help context id for the reviewViewer's control

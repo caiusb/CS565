@@ -3,8 +3,6 @@ package edu.illinois.reviewbrowser.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.illinois.reviewbrowser.views.exceptions.UnknownSelectionException;
-
 public class ReviewService {
 	private static class Instance {
 		public static final ReviewService _instance = new ReviewService();

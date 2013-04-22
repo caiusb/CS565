@@ -5,11 +5,11 @@ import java.util.List;
 
 public class Review {
 	private String url;
-	private String name;
+	private String title;
 
-	public Review(String url, String name) {
+	public Review(String url, String title) {
 		this.url = url;
-		this.name = name;
+		this.title = title;
 	}
 
 	public List<Comment> getComments() {
@@ -19,5 +19,9 @@ public class Review {
 		comments.add(new Comment("url", "msg"));
 
 		return comments;
+	}
+	
+	public String getTitle(){
+		return title;
 	}
 }

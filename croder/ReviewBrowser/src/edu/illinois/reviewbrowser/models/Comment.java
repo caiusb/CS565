@@ -34,4 +34,8 @@ public class Comment {
 	public List<Comment> getReplies() {
 		return replies;
 	}
+
+	public String getContents() {
+		return message;
+	}
 }
