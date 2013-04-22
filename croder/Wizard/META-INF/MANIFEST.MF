@@ -5,7 +5,8 @@ Bundle-SymbolicName: Wizard;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: edu.illinois.croder.wizard.Activator
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ CodeSelector;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: Group 5
