@@ -50,8 +50,9 @@ public class TaskPreviewPage extends WizardPage {
 		text.setLayoutData(new GridData(GridData.FILL_BOTH));
 		
 		Text code = new Text(codeDetailsComposite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL | SWT.WRAP);
-		code.setText("public void true(){\n\treturn true;\n}");
 		code.setLayoutData(new GridData(GridData.FILL_BOTH));
+		
+		treeViewer.addSelectionChangedListener(new TreeClickSelectionListener(text,code));
 		
 		setControl(composite);
 	}
