@@ -8,10 +8,10 @@ import org.eclipse.jdt.core.JavaModelException;
 
 import edu.illinois.codeselector.views.exceptions.UnknownSelectionException;
 
-public abstract class AbstractSnippet {
+public abstract class Snippet {
 	private IJavaElement javaElementForSnippet;
 	
-	protected AbstractSnippet(IJavaElement javaElementForSnippet){
+	protected Snippet(IJavaElement javaElementForSnippet){
 		this.javaElementForSnippet = javaElementForSnippet;
 	}
 	
@@ -39,7 +39,7 @@ public abstract class AbstractSnippet {
 		return javaElement.getElementName();
 	}
 
-	public static AbstractSnippet constructSnippetForTarget(Object snippetTarget, ICompilationUnit activeICU) throws UnknownSelectionException{
+	public static Snippet constructSnippetForTarget(Object snippetTarget, ICompilationUnit activeICU) throws UnknownSelectionException{
 		if (snippetTarget instanceof IJavaElement){
 			return new JavaElementSnippet((IJavaElement)snippetTarget);
 		}

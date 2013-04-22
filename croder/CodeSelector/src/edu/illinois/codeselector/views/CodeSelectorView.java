@@ -22,7 +22,7 @@ import org.eclipse.ui.part.ViewPart;
 
 import edu.illinois.codeselector.models.SnippetListener;
 import edu.illinois.codeselector.models.SnippetService;
-import edu.illinois.codeselector.models.snippets.AbstractSnippet;
+import edu.illinois.codeselector.models.snippets.Snippet;
 
 public class CodeSelectorView extends ViewPart {
 
@@ -34,10 +34,10 @@ public class CodeSelectorView extends ViewPart {
 	private ListViewer viewer;
 	private Action doubleClickAction;
 
-	private ArrayList<AbstractSnippet> input;
+	private ArrayList<Snippet> input;
 
 	public CodeSelectorView() {
-		input = new ArrayList<AbstractSnippet>();
+		input = new ArrayList<Snippet>();
 	}
 
 	/**

@@ -6,7 +6,7 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Text;
 
-import edu.illinois.codeselector.models.snippets.AbstractSnippet;
+import edu.illinois.codeselector.models.snippets.Snippet;
 
 public class TreeClickSelectionListener implements ISelectionChangedListener {
 
@@ -24,7 +24,7 @@ public class TreeClickSelectionListener implements ISelectionChangedListener {
 		if (!(eventSource instanceof TreeViewer))
 			return;
 
-		AbstractSnippet selectedElement = (AbstractSnippet) ((IStructuredSelection) ((TreeViewer) eventSource)
+		Snippet selectedElement = (Snippet) ((IStructuredSelection) ((TreeViewer) eventSource)
 				.getSelection()).getFirstElement();
 		code.setText(selectedElement.getCode());
 	}

@@ -6,7 +6,7 @@ import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
 import edu.illinois.codeselector.models.SnippetService;
-import edu.illinois.codeselector.models.snippets.AbstractSnippet;
+import edu.illinois.codeselector.models.snippets.Snippet;
 
 public class SnippetContentProvider implements ITreeContentProvider {
 
@@ -25,7 +25,7 @@ public class SnippetContentProvider implements ITreeContentProvider {
 	@Override
 	public Object[] getElements(Object inputElement) {
 		SnippetService snippetService = SnippetService.getInstance();
-		List<AbstractSnippet> snippets = snippetService.getSnippets();
+		List<Snippet> snippets = snippetService.getSnippets();
 		
 		return snippets.toArray();
 	}
