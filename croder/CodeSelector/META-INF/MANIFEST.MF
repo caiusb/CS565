@@ -13,3 +13,5 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jdt.core;bundle-version="3.8.2"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: edu.illinois.codeselector.models,
+ edu.illinois.codeselector.models.snippets
