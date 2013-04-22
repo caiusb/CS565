@@ -32,7 +32,7 @@ public class ReviewService {
 		}
 	}
 
-	public void addReview(Review r) throws UnknownSelectionException {
+	public void addReview(Review r) {
 		reviews.add(r);
 		notifyReviewListeners();
 	}

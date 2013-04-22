@@ -12,11 +12,15 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.SashForm;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.part.ViewPart;
 
+import edu.illinois.reviewbrowser.models.Review;
 import edu.illinois.reviewbrowser.models.ReviewListener;
 import edu.illinois.reviewbrowser.models.ReviewService;
 
@@ -27,20 +31,42 @@ public class ReviewBrowserView extends ViewPart {
 	 */
 	public static final String ID = "edu.illinois.ReviewBrowser.views.ReviewBrowserView";
 
-	private ListViewer viewer;
+	private ListViewer reviewViewer;
 	private Action doubleClickAction;
 
+	public ReviewBrowserView() {
+		ReviewService.getInstance().addReview(new Review("url", "name"));
+		ReviewService.getInstance().addReview(new Review("url", "name"));
+		ReviewService.getInstance().addReview(new Review("url", "name"));
+		ReviewService.getInstance().addReview(new Review("url", "name"));
+	}
+
 	/**
-	 * This is a callback that will allow us to create the viewer and initialize
-	 * it.
+	 * This is a callback that will allow us to create the reviewViewer and
+	 * initialize it.
 	 */
 	public void createPartControl(Composite parent) {
-		viewer = new ListViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-		viewer.setContentProvider(new ViewContentProvider());
-		viewer.setLabelProvider(new ViewLabelProvider());
-		viewer.setInput(ReviewService.getInstance().getReviews());
 
-		// Create the help context id for the viewer's control
+		SashForm sash = new SashForm(parent, SWT.HORIZONTAL);
+		sash.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+		// sash.setWeights(new int[] { 1 });
+
+		addReviewViewer(sash);
+
+		final Label labelA = new Label(sash, SWT.BORDER | SWT.CENTER);
+		labelA.setText("Label in pane A");
+
+		sash.pack();
+	}
+
+	private void addReviewViewer(SashForm sash) {
+		reviewViewer = new ListViewer(sash, SWT.BORDER | SWT.MULTI
+				| SWT.H_SCROLL | SWT.V_SCROLL);
+		reviewViewer.setContentProvider(new ViewContentProvider());
+		reviewViewer.setLabelProvider(new ViewLabelProvider());
+		reviewViewer.setInput(ReviewService.getInstance().getReviews());
+
+		// Create the help context id for the reviewViewer's control
 		makeActions();
 		hookContextMenu();
 		hookDoubleClickAction();
@@ -50,7 +76,7 @@ public class ReviewBrowserView extends ViewPart {
 
 					@Override
 					public void update() {
-						viewer.setInput(ReviewService.getInstance()
+						reviewViewer.setInput(ReviewService.getInstance()
 								.getReviews());
 					}
 				});
@@ -64,9 +90,9 @@ public class ReviewBrowserView extends ViewPart {
 				ReviewBrowserView.this.fillContextMenu(manager);
 			}
 		});
-		Menu menu = menuMgr.createContextMenu(viewer.getControl());
-		viewer.getControl().setMenu(menu);
-		getSite().registerContextMenu(menuMgr, viewer);
+		Menu menu = menuMgr.createContextMenu(reviewViewer.getControl());
+		reviewViewer.getControl().setMenu(menu);
+		getSite().registerContextMenu(menuMgr, reviewViewer);
 	}
 
 	private void fillContextMenu(IMenuManager manager) {
@@ -78,7 +104,7 @@ public class ReviewBrowserView extends ViewPart {
 	private void makeActions() {
 		doubleClickAction = new Action() {
 			public void run() {
-				ISelection selection = viewer.getSelection();
+				ISelection selection = reviewViewer.getSelection();
 				Object obj = ((IStructuredSelection) selection)
 						.getFirstElement();
 				showMessage("Double-click detected on " + obj.toString());
@@ -87,7 +113,7 @@ public class ReviewBrowserView extends ViewPart {
 	}
 
 	private void hookDoubleClickAction() {
-		viewer.addDoubleClickListener(new IDoubleClickListener() {
+		reviewViewer.addDoubleClickListener(new IDoubleClickListener() {
 			public void doubleClick(DoubleClickEvent event) {
 				doubleClickAction.run();
 			}
@@ -95,14 +121,14 @@ public class ReviewBrowserView extends ViewPart {
 	}
 
 	private void showMessage(String message) {
-		MessageDialog.openInformation(viewer.getControl().getShell(),
+		MessageDialog.openInformation(reviewViewer.getControl().getShell(),
 				"CodeSelector", message);
 	}
 
 	/**
-	 * Passing the focus request to the viewer's control.
+	 * Passing the focus request to the reviewViewer's control.
 	 */
 	public void setFocus() {
-		viewer.getControl().setFocus();
+		reviewViewer.getControl().setFocus();
 	}
 }
