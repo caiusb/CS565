@@ -6,7 +6,9 @@ import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.ListViewer;
+import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.layout.GridData;
@@ -28,6 +30,8 @@ public class ReviewBrowserView extends ViewPart {
 	private ListViewer reviewViewer;
 	private Action doubleClickAction;
 
+	private TreeViewer commentViewer;
+
 	public ReviewBrowserView() {
 		ReviewService.getInstance().addReview(new Review("url", "name"));
 		ReviewService.getInstance().addReview(new Review("url", "name"));
@@ -46,11 +50,15 @@ public class ReviewBrowserView extends ViewPart {
 		// sash.setWeights(new int[] { 1 });
 
 		addReviewViewer(sash);
-
-		final Label labelA = new Label(sash, SWT.BORDER | SWT.CENTER);
-		labelA.setText("Label in pane A");
+		addCommentViewer(sash);
 
 		sash.pack();
+	}
+
+	private void addCommentViewer(SashForm sash) {
+		commentViewer = new TreeViewer(sash, SWT.BORDER | SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+	    commentViewer.setContentProvider(new CommentViewerContentProvider());
+	    commentViewer.setLabelProvider(new LabelProvider());
 	}
 
 	private void addReviewViewer(SashForm sash) {
