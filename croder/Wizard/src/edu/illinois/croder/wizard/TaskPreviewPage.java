@@ -45,12 +45,12 @@ public class TaskPreviewPage extends WizardPage {
 		codeDetailsComposite.setLayoutData(new GridData(GridData.FILL_BOTH));
 		
 		Text text = new Text(codeDetailsComposite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL | SWT.WRAP);
-		text.setText("Here you will have the description and the code," +
-				"hopefully in some nice format.");
 		text.setLayoutData(new GridData(GridData.FILL_BOTH));
+		text.addModifyListener(new CommentModifyListener(treeViewer));
 		
 		Text code = new Text(codeDetailsComposite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL | SWT.WRAP);
 		code.setLayoutData(new GridData(GridData.FILL_BOTH));
+		code.addModifyListener(new CodeModifyListener(treeViewer));
 		
 		treeViewer.addSelectionChangedListener(new TreeClickSelectionListener(text,code));
 		
