@@ -7,12 +7,12 @@ public class StringSnippet extends Snippet {
 	private String codeSnippet;
 
 	protected StringSnippet(String codeSnippet, ICompilationUnit activeICU) {
-		super(activeICU);
+		super(activeICU, "");
 		this.codeSnippet = codeSnippet;
 	}
 	
 	@Override
-	public String getCode() {
+	public String computeCode() {
 		return codeSnippet;
 	}
 }

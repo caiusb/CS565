@@ -10,11 +10,11 @@ import org.eclipse.jdt.internal.core.JavaElement;
 public class JavaElementSnippet extends Snippet {
 
 	public JavaElementSnippet(IJavaElement snippetTarget) {
-		super(snippetTarget);
+		super(snippetTarget, "");
 	}
 
 	@Override
-	public String getCode() {
+	public String computeCode() {
 		LinkedList<ISourceReference> sourceReferences = new LinkedList<ISourceReference>();
 		retrieveSourceReferencesFor(super.getJavaElementForSnippet(), sourceReferences);
 
