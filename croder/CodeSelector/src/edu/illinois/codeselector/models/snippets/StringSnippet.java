@@ -12,7 +12,7 @@ public class StringSnippet extends Snippet {
 	}
 	
 	@Override
-	public String getCode() {
+	public String computeCode() {
 		return codeSnippet;
 	}
 }
