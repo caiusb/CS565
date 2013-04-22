@@ -1,4 +1,4 @@
-package edu.illinois.codeselector.models.snippets;
+package edu.illinois.reviewbrowser.models.snippets;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 

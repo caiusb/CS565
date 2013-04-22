@@ -1,4 +1,4 @@
-package edu.illinois.codeselector.views;
+package edu.illinois.reviewbrowser.views;
 
 import java.util.ArrayList;
 
@@ -12,7 +12,6 @@ import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -20,23 +19,23 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.part.ViewPart;
 
-import edu.illinois.codeselector.models.SnippetListener;
-import edu.illinois.codeselector.models.SnippetService;
-import edu.illinois.codeselector.models.snippets.AbstractSnippet;
+import edu.illinois.reviewbrowser.models.SnippetListener;
+import edu.illinois.reviewbrowser.models.SnippetService;
+import edu.illinois.reviewbrowser.models.snippets.AbstractSnippet;
 
-public class CodeSelectorView extends ViewPart {
+public class ReviewBrowserView extends ViewPart {
 
 	/**
 	 * The ID of the view as specified by the extension.
 	 */
-	public static final String ID = "edu.illinois.codeselector.views.CodeSelectorView";
+	public static final String ID = "edu.illinois.ReviewBrowser.views.ReviewBrowserView";
 
 	private ListViewer viewer;
 	private Action doubleClickAction;
 
-	private ArrayList<AbstractSnippet> input;
+	private ArrayList<?> input;
 
-	public CodeSelectorView() {
+	public ReviewBrowserView() {
 		input = new ArrayList<AbstractSnippet>();
 	}
 
@@ -69,7 +68,7 @@ public class CodeSelectorView extends ViewPart {
 		menuMgr.setRemoveAllWhenShown(true);
 		menuMgr.addMenuListener(new IMenuListener() {
 			public void menuAboutToShow(IMenuManager manager) {
-				CodeSelectorView.this.fillContextMenu(manager);
+				ReviewBrowserView.this.fillContextMenu(manager);
 			}
 		});
 		Menu menu = menuMgr.createContextMenu(viewer.getControl());

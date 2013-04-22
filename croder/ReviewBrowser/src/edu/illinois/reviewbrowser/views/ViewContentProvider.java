@@ -1,11 +1,11 @@
-package edu.illinois.codeselector.views;
+package edu.illinois.reviewbrowser.views;
 
 import java.util.List;
 
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
-import edu.illinois.codeselector.models.snippets.AbstractSnippet;
+import edu.illinois.reviewbrowser.models.snippets.AbstractSnippet;
 
 public class ViewContentProvider implements IStructuredContentProvider {
 

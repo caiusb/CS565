@@ -1,9 +1,9 @@
-package edu.illinois.codeselector.views;
+package edu.illinois.reviewbrowser.views;
 
 import org.eclipse.jface.viewers.IBaseLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 
-import edu.illinois.codeselector.models.snippets.AbstractSnippet;
+import edu.illinois.reviewbrowser.models.snippets.AbstractSnippet;
 
 public class ViewLabelProvider extends LabelProvider implements
 		IBaseLabelProvider {

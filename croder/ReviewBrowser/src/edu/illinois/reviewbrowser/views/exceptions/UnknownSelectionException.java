@@ -1,4 +1,4 @@
-package edu.illinois.codeselector.views.exceptions;
+package edu.illinois.reviewbrowser.views.exceptions;
 
 
 public class UnknownSelectionException extends Exception {

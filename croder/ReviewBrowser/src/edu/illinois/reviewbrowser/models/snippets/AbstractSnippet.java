@@ -1,9 +1,9 @@
-package edu.illinois.codeselector.models.snippets;
+package edu.illinois.reviewbrowser.models.snippets;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IJavaElement;
 
-import edu.illinois.codeselector.views.exceptions.UnknownSelectionException;
+import edu.illinois.reviewbrowser.views.exceptions.UnknownSelectionException;
 
 public abstract class AbstractSnippet {
 	private IJavaElement javaElementForSnippet;

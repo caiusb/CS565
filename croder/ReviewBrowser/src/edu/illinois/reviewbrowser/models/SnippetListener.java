@@ -1,4 +1,4 @@
-package edu.illinois.codeselector.models;
+package edu.illinois.reviewbrowser.models;
 
 public interface SnippetListener {
 

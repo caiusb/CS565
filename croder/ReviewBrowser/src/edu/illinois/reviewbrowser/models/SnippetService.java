@@ -1,12 +1,12 @@
-package edu.illinois.codeselector.models;
+package edu.illinois.reviewbrowser.models;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 
-import edu.illinois.codeselector.models.snippets.AbstractSnippet;
-import edu.illinois.codeselector.views.exceptions.UnknownSelectionException;
+import edu.illinois.reviewbrowser.models.snippets.AbstractSnippet;
+import edu.illinois.reviewbrowser.views.exceptions.UnknownSelectionException;
 
 public class SnippetService {
 	private static class Instance {
