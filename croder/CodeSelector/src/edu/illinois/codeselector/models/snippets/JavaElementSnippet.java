@@ -10,7 +10,7 @@ import org.eclipse.jdt.internal.core.JavaElement;
 public class JavaElementSnippet extends Snippet {
 
 	public JavaElementSnippet(IJavaElement snippetTarget) {
-		super(snippetTarget);
+		super(snippetTarget, "");
 	}
 
 	@Override

@@ -12,6 +12,10 @@ public abstract class Snippet {
 	private IJavaElement javaElementForSnippet;
 	
 	protected Snippet(IJavaElement javaElementForSnippet){
+		this(javaElementForSnippet, "");
+	}
+
+	protected Snippet(IJavaElement javaElementForSnippet, String userComment){
 		this.javaElementForSnippet = javaElementForSnippet;
 	}
 	
