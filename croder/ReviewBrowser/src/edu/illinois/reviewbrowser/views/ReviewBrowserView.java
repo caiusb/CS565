@@ -68,7 +68,6 @@ public class ReviewBrowserView extends ViewPart {
 
 		// Create the help context id for the reviewViewer's control
 		makeActions();
-		hookContextMenu();
 		hookDoubleClickAction();
 
 		ReviewService.getInstance().registerReviewListener(
@@ -80,25 +79,6 @@ public class ReviewBrowserView extends ViewPart {
 								.getReviews());
 					}
 				});
-	}
-
-	private void hookContextMenu() {
-		MenuManager menuMgr = new MenuManager("#PopupMenu");
-		menuMgr.setRemoveAllWhenShown(true);
-		menuMgr.addMenuListener(new IMenuListener() {
-			public void menuAboutToShow(IMenuManager manager) {
-				ReviewBrowserView.this.fillContextMenu(manager);
-			}
-		});
-		Menu menu = menuMgr.createContextMenu(reviewViewer.getControl());
-		reviewViewer.getControl().setMenu(menu);
-		getSite().registerContextMenu(menuMgr, reviewViewer);
-	}
-
-	private void fillContextMenu(IMenuManager manager) {
-		manager.add(new Separator());
-		// Other plug-ins can contribute there actions here
-		manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
 	}
 
 	private void makeActions() {
