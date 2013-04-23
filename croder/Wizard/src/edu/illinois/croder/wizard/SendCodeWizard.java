@@ -12,6 +12,7 @@ public class SendCodeWizard extends Wizard {
 
 	@Override
 	public void addPages() {
+		addPage(new TaskSetupPage());
 		addPage(new CodePreviewPage());
 		addPage(new SelectServicePage());
 	}
