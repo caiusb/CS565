@@ -7,7 +7,7 @@ import org.eclipse.jface.viewers.Viewer;
 
 import edu.illinois.reviewbrowser.models.Comment;
 
-public class CommentViewerContentProvider implements ITreeContentProvider {
+public class ReplyViewerContentProvider implements ITreeContentProvider {
 
 	@Override
 	public void dispose() {

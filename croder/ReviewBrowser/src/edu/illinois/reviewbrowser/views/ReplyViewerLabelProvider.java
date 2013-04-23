@@ -5,7 +5,7 @@ import org.eclipse.jface.viewers.LabelProvider;
 
 import edu.illinois.reviewbrowser.models.Comment;
 
-public class CommentViewerLabelProvider extends LabelProvider implements
+public class ReplyViewerLabelProvider extends LabelProvider implements
 		IBaseLabelProvider {
 	@Override
 	public String getText(Object element) {

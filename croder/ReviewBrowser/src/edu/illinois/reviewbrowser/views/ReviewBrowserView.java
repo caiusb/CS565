@@ -15,6 +15,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 
+import edu.illinois.reviewbrowser.models.Content;
 import edu.illinois.reviewbrowser.models.Review;
 import edu.illinois.reviewbrowser.models.ReviewListener;
 import edu.illinois.reviewbrowser.models.ReviewService;
@@ -28,13 +29,13 @@ public class ReviewBrowserView extends ViewPart {
 
 	private ListViewer reviewViewer;
 
-	private TreeViewer commentViewer;
+	private TreeViewer replyViewer;
 
 	public ReviewBrowserView() {
-		ReviewService.getInstance().addReview(new Review("url", "name"));
-		ReviewService.getInstance().addReview(new Review("url", "name"));
-		ReviewService.getInstance().addReview(new Review("url", "name"));
-		ReviewService.getInstance().addReview(new Review("url", "name"));
+		ReviewService.getInstance().addReview("title", new Content());
+		ReviewService.getInstance().addReview("title", new Content());
+		ReviewService.getInstance().addReview("title", new Content());
+		ReviewService.getInstance().addReview("title", new Content());
 	}
 
 	/**
@@ -54,11 +55,11 @@ public class ReviewBrowserView extends ViewPart {
 	}
 
 	private void addCommentViewer(SashForm sash) {
-		commentViewer = new TreeViewer(sash, SWT.BORDER | SWT.MULTI
+		replyViewer = new TreeViewer(sash, SWT.BORDER | SWT.MULTI
 				| SWT.H_SCROLL | SWT.V_SCROLL);
-		commentViewer.setContentProvider(new CommentViewerContentProvider());
-		commentViewer.setLabelProvider(new CommentViewerLabelProvider());
-		commentViewer.setInput(new ArrayList<>());
+		replyViewer.setContentProvider(new ReplyViewerContentProvider());
+		replyViewer.setLabelProvider(new ReplyViewerLabelProvider());
+		replyViewer.setInput(new ArrayList<>());
 	}
 
 	private void addReviewViewer(SashForm sash) {
@@ -88,7 +89,7 @@ public class ReviewBrowserView extends ViewPart {
 				Review review = (Review) ((IStructuredSelection) selection)
 						.getFirstElement();
 
-				commentViewer.setInput(review.getComments());
+				replyViewer.setInput(review.getReplies());
 			}
 		});
 	}
