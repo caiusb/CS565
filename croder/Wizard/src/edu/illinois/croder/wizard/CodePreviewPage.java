@@ -15,8 +15,8 @@ public class CodePreviewPage extends WizardPage {
 
 	protected CodePreviewPage() {
 		super("Code Selection Page");
-		setTitle("Task preview");
-		setDescription("Please preview the task");
+		setTitle("Code preview");
+		setDescription("Please preview the code you are about to submit");
 	}
 
 	@Override
