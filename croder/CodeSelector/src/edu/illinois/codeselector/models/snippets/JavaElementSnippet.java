@@ -3,20 +3,23 @@ package edu.illinois.codeselector.models.snippets;
 import java.util.LinkedList;
 
 import org.eclipse.jdt.core.IJavaElement;
+import org.eclipse.jdt.core.ISourceRange;
 import org.eclipse.jdt.core.ISourceReference;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.internal.core.JavaElement;
 
 public class JavaElementSnippet extends Snippet {
 
+	private LinkedList<ISourceReference> sourceReferences;
+
 	public JavaElementSnippet(IJavaElement snippetTarget) {
 		super(snippetTarget, "");
+		sourceReferences = new LinkedList<ISourceReference>();
+		retrieveSourceReferencesFor(super.getJavaElementForSnippet(), sourceReferences);
 	}
 
 	@Override
 	public String computeCode() {
-		LinkedList<ISourceReference> sourceReferences = new LinkedList<ISourceReference>();
-		retrieveSourceReferencesFor(super.getJavaElementForSnippet(), sourceReferences);
 
 		return convertSourceReferencesToSourceCode(sourceReferences);
 	}
@@ -44,7 +47,15 @@ public class JavaElementSnippet extends Snippet {
 		JavaElement elem = (JavaElement) javaElement;
 
 		if (elem instanceof ISourceReference) {
-			sourceReferences.add((ISourceReference) elem);
+			ISourceReference sourceElement = (ISourceReference) elem;
+			ISourceRange sourceRange;
+			try {
+				sourceRange = sourceElement.getSourceRange();
+				setOffset(sourceRange.getOffset());
+				setLength(sourceRange.getLength());
+			} catch (JavaModelException e) {
+			}
+			sourceReferences.add(sourceElement);
 		} else {
 			collectFromChildren(elem, sourceReferences);
 		}
