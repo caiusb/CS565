@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jdt.core.ICompilationUnit;
+import org.eclipse.jface.viewers.ISelection;
 
 import edu.illinois.codeselector.models.snippets.Snippet;
 import edu.illinois.codeselector.views.exceptions.UnknownSelectionException;
@@ -35,8 +36,8 @@ public class SnippetService {
 		}
 	}
 
-	public void addSnipetForObject(Object snippetTarget, ICompilationUnit activeICU) throws UnknownSelectionException {
-		Snippet snippet = Snippet.constructSnippetForTarget(snippetTarget, activeICU);
+	public void addSnipetForObject(Object snippetTarget, ICompilationUnit activeICU, ISelection selection) throws UnknownSelectionException {
+		Snippet snippet = Snippet.constructSnippetForTarget(snippetTarget, activeICU, selection);
 		snippets.add(snippet);
 		notifySnippetListeners();
 	}

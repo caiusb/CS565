@@ -40,7 +40,7 @@ public class AddSnippetCommand extends AbstractHandler {
 			Object selectionObject = getSelectionObject(selection);
 			// displayMessage(selectionObject.getClass().getName() + "\n" +
 			// selectionObject.toString());
-			handleSelectionObject(selectionObject);
+			handleSelectionObject(selectionObject, selection);
 		} catch (UnknownSelectionException e) {
 			displayMessage("Cannot handle selection of type " + e.getMessage());
 		}
@@ -48,8 +48,8 @@ public class AddSnippetCommand extends AbstractHandler {
 		return null;
 	}
 
-	private void handleSelectionObject(Object selectionObject) throws UnknownSelectionException {
-		SnippetService.getInstance().addSnipetForObject(selectionObject, activeICU);
+	private void handleSelectionObject(Object selectionObject, ISelection selection) throws UnknownSelectionException {
+		SnippetService.getInstance().addSnipetForObject(selectionObject, activeICU, selection);
 	}
 
 	private Object getSelectionObject(ISelection selection) throws UnknownSelectionException {
