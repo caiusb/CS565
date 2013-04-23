@@ -8,11 +8,11 @@ import org.eclipse.swt.widgets.Text;
 
 import edu.illinois.codeselector.models.snippets.Snippet;
 
-public abstract class PreviewModifyListener implements ModifyListener {
+public abstract class AbstractPreviewModifyListener implements ModifyListener {
 
 	private TreeViewer treeViewer;
 
-	public PreviewModifyListener(TreeViewer treeViewer) {
+	public AbstractPreviewModifyListener(TreeViewer treeViewer) {
 		this.treeViewer = treeViewer;
 	}
 

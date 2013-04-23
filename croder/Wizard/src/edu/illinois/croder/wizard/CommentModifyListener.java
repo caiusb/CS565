@@ -4,7 +4,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 
 import edu.illinois.codeselector.models.snippets.Snippet;
 
-public class CommentModifyListener extends PreviewModifyListener {
+public class CommentModifyListener extends AbstractPreviewModifyListener {
 
 	public CommentModifyListener(TreeViewer treeViewer) {
 		super(treeViewer);

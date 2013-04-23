@@ -4,7 +4,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 
 import edu.illinois.codeselector.models.snippets.Snippet;
 
-public class CodeModifyListener extends PreviewModifyListener {
+public class CodeModifyListener extends AbstractPreviewModifyListener {
 
 	public CodeModifyListener(TreeViewer treeViewer) {
 		super(treeViewer);
@@ -12,6 +12,7 @@ public class CodeModifyListener extends PreviewModifyListener {
 
 	@Override
 	protected void setProperty(String content, Snippet selected) {
+		selected.setCode(content);
 	}
 
 }
