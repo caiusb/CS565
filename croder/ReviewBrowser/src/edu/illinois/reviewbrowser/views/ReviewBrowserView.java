@@ -89,7 +89,7 @@ public class ReviewBrowserView extends ViewPart {
 				Review review = (Review) ((IStructuredSelection) selection)
 						.getFirstElement();
 
-				replyViewer.setInput(review.getReplies());
+				//replyViewer.setInput(review.getReplies());
 			}
 		});
 	}
