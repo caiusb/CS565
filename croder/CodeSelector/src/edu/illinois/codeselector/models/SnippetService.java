@@ -40,6 +40,11 @@ public class SnippetService {
 		snippets.add(snippet);
 		notifySnippetListeners();
 	}
+	
+	public void removeAllSnippets(){
+		snippets.clear();
+		notifySnippetListeners();
+	}
 
 	public List<Snippet> getSnippets() {
 		return snippets;
