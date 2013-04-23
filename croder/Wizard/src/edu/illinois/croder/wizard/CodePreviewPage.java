@@ -11,9 +11,9 @@ import org.eclipse.swt.widgets.Text;
 
 import edu.illinois.codeselector.models.SnippetService;
 
-public class TaskPreviewPage extends WizardPage {
+public class CodePreviewPage extends WizardPage {
 
-	protected TaskPreviewPage() {
+	protected CodePreviewPage() {
 		super("Code Selection Page");
 		setTitle("Task preview");
 		setDescription("Please preview the task");
