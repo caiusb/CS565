@@ -25,7 +25,6 @@ public class CodePreviewPage extends WizardPage {
 		composite.setLayout(new GridLayout(1, false));
 		composite.setLayoutData(new GridData(GridData.FILL_BOTH));
 		
-		makeTitle(composite);
 		makeCodeArea(composite);
 		
 		setControl(composite);
@@ -73,19 +72,4 @@ public class CodePreviewPage extends WizardPage {
 		treeViewer.getControl().setLayoutData(new GridData(GridData.FILL_BOTH));
 		return treeViewer;
 	}
-
-	private void makeTitle(Composite composite) {
-		Composite titleComposite = new Composite(composite,SWT.NONE);
-		titleComposite.setLayout(new GridLayout(2, false));
-		titleComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		Label label = new Label(titleComposite, SWT.NONE);
-		label.setText("Title of your task:");
-		
-		Composite titleTextComposite = new Composite(titleComposite, SWT.NONE);
-		titleTextComposite.setLayout(new GridLayout(1, true));
-		titleTextComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		Text titleField = new Text(titleTextComposite, SWT.BORDER);
-		titleField.setLayoutData(new GridData(GridData.FILL_BOTH));
-	}
-
 }
