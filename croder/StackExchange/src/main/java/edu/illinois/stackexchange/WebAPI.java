@@ -18,7 +18,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlPasswordInput;
 import com.gargoylesoftware.htmlunit.html.HtmlTextArea;
 import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
 
-public class WebAPI {
+public class WebAPI implements WebApiInterface {
 
 	WebClient webClient = new WebClient(BrowserVersion.FIREFOX_3_6);
 	HtmlPage page = null;
