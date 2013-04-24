@@ -99,6 +99,7 @@ public class ReviewService {
 				marker.setAttribute(IMarker.MESSAGE, review.getTitle());
 				marker.setAttribute(IMarker.CHAR_START, snippet.getOffset());
 				marker.setAttribute(IMarker.CHAR_END, snippet.getOffset()+snippet.getLength());
+				marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_WARNING);
 			} catch (CoreException e) {
 			}
 		}
