@@ -3,6 +3,9 @@ package edu.illinois.codeselector.views;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.resources.IMarker;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.ui.JavaUI;
@@ -18,6 +21,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 
 import edu.illinois.codeselector.models.SnippetService;
+import edu.illinois.codeselector.models.snippets.Snippet;
 import edu.illinois.codeselector.views.exceptions.UnknownSelectionException;
 
 public class AddSnippetCommand extends AbstractHandler {
@@ -26,21 +30,22 @@ public class AddSnippetCommand extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		ISelectionService ss = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService();
+		ISelectionService ss = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+				.getSelectionService();
 		ISelection selection = ss.getSelection();
 
 		if (selection == null) {
 			displayMessage("No selection detected");
 			return null;
 		}
-		
+
 		activeICU = getActiveICU();
 
 		try {
 			Object selectionObject = getSelectionObject(selection);
 			// displayMessage(selectionObject.getClass().getName() + "\n" +
 			// selectionObject.toString());
-			handleSelectionObject(selectionObject, selection);
+			Snippet snippet = handleSelectionObject(selectionObject, selection);
 		} catch (UnknownSelectionException e) {
 			displayMessage("Cannot handle selection of type " + e.getMessage());
 		}
@@ -48,8 +53,10 @@ public class AddSnippetCommand extends AbstractHandler {
 		return null;
 	}
 
-	private void handleSelectionObject(Object selectionObject, ISelection selection) throws UnknownSelectionException {
-		SnippetService.getInstance().addSnipetForObject(selectionObject, activeICU, selection);
+	private Snippet handleSelectionObject(Object selectionObject, ISelection selection)
+			throws UnknownSelectionException {
+		return SnippetService.getInstance().addSnipetForObject(selectionObject, activeICU,
+				selection);
 	}
 
 	private Object getSelectionObject(ISelection selection) throws UnknownSelectionException {
@@ -61,8 +68,16 @@ public class AddSnippetCommand extends AbstractHandler {
 
 		else if (selection instanceof TextSelection) {
 			TextSelection textSelection = (TextSelection) selection;
-
-
+			try {
+				IResource resource = activeICU.getCorrespondingResource();
+				IMarker marker = resource.createMarker("edu.illinois.croder.snippetMarker");
+				marker.setAttribute(IMarker.MESSAGE, "selected for review");
+				marker.setAttribute(IMarker.CHAR_START, textSelection.getOffset());
+				marker.setAttribute(IMarker.CHAR_END,
+						textSelection.getLength() + textSelection.getOffset());
+				marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_WARNING);
+			} catch (CoreException e) {
+			}
 			return textSelection.getText();
 		}
 
@@ -85,6 +100,7 @@ public class AddSnippetCommand extends AbstractHandler {
 	}
 
 	private void displayMessage(String message) {
-		MessageDialog.openInformation(Display.getCurrent().getActiveShell(), "CodeSelector", message);
+		MessageDialog.openInformation(Display.getCurrent().getActiveShell(), "CodeSelector",
+				message);
 	}
 }

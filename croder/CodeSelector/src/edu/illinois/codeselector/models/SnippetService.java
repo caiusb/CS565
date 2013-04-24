@@ -36,10 +36,11 @@ public class SnippetService {
 		}
 	}
 
-	public void addSnipetForObject(Object snippetTarget, ICompilationUnit activeICU, ISelection selection) throws UnknownSelectionException {
+	public Snippet addSnipetForObject(Object snippetTarget, ICompilationUnit activeICU, ISelection selection) throws UnknownSelectionException {
 		Snippet snippet = Snippet.constructSnippetForTarget(snippetTarget, activeICU, selection);
 		snippets.add(snippet);
 		notifySnippetListeners();
+		return snippet;
 	}
 
 	public List<Snippet> getSnippets() {
