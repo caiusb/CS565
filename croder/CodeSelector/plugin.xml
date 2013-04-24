@@ -89,7 +89,7 @@
           colorPreferenceValue="0,255,0"
           contributesToHeader="true"
           includeOnPreferencePage="true"
-          icon="icons/bubble.gif"
+          icon="icons/bubble.png"
           label="Review"
           overviewRulerPreferenceKey="croder.rulers.overview"
           overviewRulerPreferenceValue="true"
