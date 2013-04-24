@@ -1,5 +1,7 @@
 package edu.illinois.codeselector.models.snippets;
 
+import java.io.Serializable;
+
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IMethod;
@@ -8,8 +10,10 @@ import org.eclipse.jdt.core.JavaModelException;
 
 import edu.illinois.codeselector.views.exceptions.UnknownSelectionException;
 
-public abstract class Snippet {
-	private IJavaElement javaElementForSnippet;
+public abstract class Snippet implements Serializable{
+	private static final long serialVersionUID = -1932192898282339156L;
+
+	private transient IJavaElement javaElementForSnippet;
 	private String userComment;
 	private String code;
 	

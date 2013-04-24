@@ -1,11 +1,14 @@
 package edu.illinois.reviewbrowser.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import edu.illinois.codeselector.models.snippets.Snippet;
 
-public class Review {
+public class Review implements Serializable{
+	private static final long serialVersionUID = 1215949815105223382L;
+	
 	private String url;
 	private String title;
 
@@ -44,7 +47,12 @@ public class Review {
 	}
 
 	public List<Reply> getReplies() {
-		return replies;
+		List<Reply> r = new ArrayList<>();
+		
+		r.add(new Reply("first comment"));
+		r.add(new Reply("second comment"));
+		
+		return r;
 	}
 
 	public String getTitle() {

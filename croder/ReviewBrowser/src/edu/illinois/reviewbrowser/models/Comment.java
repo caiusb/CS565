@@ -1,9 +1,12 @@
 package edu.illinois.reviewbrowser.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Comment {
+public class Comment implements Serializable{
+	private static final long serialVersionUID = 5487192849270727983L;
+
 	private String url;
 	private String message;
 	private Comment parent;

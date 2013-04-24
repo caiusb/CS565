@@ -1,7 +1,11 @@
 package edu.illinois.reviewbrowser.models;
 
+import java.io.Serializable;
 
-public class User {
+
+public class User implements Serializable{
+	private static final long serialVersionUID = 6314492339409989075L;
+
 	private String email;
 	private String pass;
 	

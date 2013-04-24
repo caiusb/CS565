@@ -1,8 +1,14 @@
 package edu.illinois.reviewbrowser.models;
 
+import java.io.Serializable;
+
 import edu.illinois.codeselector.models.snippets.Snippet;
 
-public class StackOverflowPostFormatter {
+public class StackOverflowPostFormatter implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7037123627479395734L;
 	private Review review;
 
 	public StackOverflowPostFormatter(Review review) {

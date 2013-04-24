@@ -93,6 +93,8 @@ public class ReviewBrowserView extends ViewPart {
 				ReviewService.getInstance().authenticate(emailText.getText().trim(), passWordText.getText().trim());
 				stackLayout.topControl = sash;
 				parent.layout();
+				
+				refreshReviewViewer();
 			}
         });
         
@@ -122,7 +124,10 @@ public class ReviewBrowserView extends ViewPart {
 		
 		//this will hold the browsers for each comment
 		replyParent = new Composite(sash, SWT.NONE);
-		replyParent.setLayout(new RowLayout(SWT.VERTICAL));
+		RowLayout layout = new RowLayout(SWT.VERTICAL);
+		layout.pack = true;
+		
+		replyParent.setLayout(layout);
 	}
 
 	private void addReviewViewer(SashForm sash) {
@@ -130,10 +135,10 @@ public class ReviewBrowserView extends ViewPart {
 				| SWT.H_SCROLL | SWT.V_SCROLL);
 		reviewViewer.setContentProvider(new ReviewViewerContentProvider());
 		reviewViewer.setLabelProvider(new ReviewViewerLabelProvider());
-		reviewViewer.setInput(ReviewService.getInstance().getReviews());
+		refreshReviewViewer();
 
 		// Create the help context id for the reviewViewer's control
-		//hookDoubleClickAction();
+		hookDoubleClickAction();
 
 		ReviewService.getInstance().registerReviewListener(
 				new ReviewListener() {
@@ -145,6 +150,10 @@ public class ReviewBrowserView extends ViewPart {
 				});
 	}
 
+	private void refreshReviewViewer() {
+		reviewViewer.setInput(ReviewService.getInstance().getReviews());
+	}
+
 	private void hookDoubleClickAction() {
 		reviewViewer.addDoubleClickListener(new IDoubleClickListener() {
 			public void doubleClick(DoubleClickEvent event) {
@@ -152,7 +161,7 @@ public class ReviewBrowserView extends ViewPart {
 				Review review = (Review) ((IStructuredSelection) selection)
 						.getFirstElement();
 				
-				ReviewService.getInstance().updateReplies();
+				//ReviewService.getInstance().updateReplies();
 				
 				showRepliesForReview(review);
 			}
@@ -166,7 +175,7 @@ public class ReviewBrowserView extends ViewPart {
 				
 				for (Reply reply : review.getReplies()) {
 					Browser b = new Browser(replyParent, SWT.NONE);
-					//b.setJavascriptEnabled(true);
+					b.setJavascriptEnabled(true);
 					b.setText(reply.getText());
 				}
 				
