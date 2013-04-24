@@ -11,8 +11,15 @@ import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
+import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.part.ViewPart;
 
 import edu.illinois.reviewbrowser.models.Content;
@@ -31,27 +38,74 @@ public class ReviewBrowserView extends ViewPart {
 
 	private TreeViewer replyViewer;
 
+	private StackLayout stackLayout;
+
+	private SashForm sash;
+
+	private Composite login;
+
 	public ReviewBrowserView() {
+		/*ReviewService.getInstance().addReview("title", new Content());
 		ReviewService.getInstance().addReview("title", new Content());
 		ReviewService.getInstance().addReview("title", new Content());
-		ReviewService.getInstance().addReview("title", new Content());
-		ReviewService.getInstance().addReview("title", new Content());
+		ReviewService.getInstance().addReview("title", new Content());*/
 	}
 
 	/**
 	 * This is a callback that will allow us to create the reviewViewer and
 	 * initialize it.
 	 */
-	public void createPartControl(Composite parent) {
+	public void createPartControl(final Composite parent) {
 
-		SashForm sash = new SashForm(parent, SWT.HORIZONTAL);
-		sash.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-		// sash.setWeights(new int[] { 1 });
+		parent.setLayoutData(new GridData(GridData.FILL_BOTH));
+        stackLayout = new StackLayout();
+        parent.setLayout(stackLayout);
+		
+        // the login
+        login = new Composite(parent, SWT.NONE);
+        login.setLayoutData(new GridData(GridData.FILL_BOTH));
+        login.setLayout(new GridLayout());
+        
+        Label userNamelabel = new Label(login, SWT.NULL);
+        userNamelabel.setText("User Name: ");
+        
+        final Text emailText = new Text(login, SWT.BORDER);
+        emailText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        
+        Label passwordLavel = new Label(login, SWT.NULL);
+        passwordLavel.setText("User Name: ");
+        
+        final Text passWordText = new Text(login, SWT.BORDER);
+        passWordText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        
+        Button loginButton = new Button(login, SWT.PUSH);
+        loginButton.setText("Login");
+        
+        loginButton.addListener(SWT.Selection, new Listener(){
+        	
+			@Override
+			public void handleEvent(Event event) {
+				//ReviewService.getInstance().authenticate(emailText.getText().trim(), passWordText.getText().trim());
+				stackLayout.topControl = sash;
+				parent.layout();
+			}
+        });
+        
+        // the sash with reviews and replies
+        addReviewCommentSash(parent);
+        
 
-		addReviewViewer(sash);
-		addCommentViewer(sash);
+		stackLayout.topControl = login;
+		parent.layout();
+	}
 
-		sash.pack();
+	private void addReviewCommentSash(Composite parent) {
+		sash = new SashForm(parent, SWT.HORIZONTAL);
+        sash.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+        addReviewViewer(sash);
+        addCommentViewer(sash);
+        sash.setWeights(new int[] { 30, 70});
+        sash.pack();
 	}
 
 	private void addCommentViewer(SashForm sash) {

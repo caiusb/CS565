@@ -54,6 +54,10 @@ public class ReviewService {
 	}
 
 	public List<Review> getReviews() {
+		
+		if(currentUser == null)
+			return new ArrayList<Review>();
+		
 		return reviews.get(currentUser);
 	}
 
