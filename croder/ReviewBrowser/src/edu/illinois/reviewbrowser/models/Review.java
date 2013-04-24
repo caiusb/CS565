@@ -11,9 +11,11 @@ public class Review {
 
 	private List<Reply> replies;
 	private List<Comment> comments;
-	private List<Snippet> snippets;
-	private StackOverflowPostFormatter formatter;
+	
 	private String mainComment;
+	private List<Snippet> snippets;
+	
+	private StackOverflowPostFormatter formatter;
 
 	public Review(String title, String mainComment, List<Snippet> snippets) {
 		this.title = title;
@@ -21,8 +23,8 @@ public class Review {
 		this.snippets = snippets;
 		this.formatter = new StackOverflowPostFormatter(this);
 
-		replies = new ArrayList<Reply>();
-		comments = new ArrayList<Comment>();
+		replies = new ArrayList<>();
+		comments = new ArrayList<>();
 	}
 
 	public String formatForPost() {
@@ -41,6 +43,10 @@ public class Review {
 		this.replies = replies;
 	}
 
+	public List<Reply> getReplies() {
+		return replies;
+	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -52,4 +58,5 @@ public class Review {
 	public List<Snippet> getSnippets() {
 		return snippets;
 	}
+
 }

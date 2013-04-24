@@ -6,7 +6,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import edu.illinois.codeselector.models.snippets.Snippet;
 import edu.illinois.stackexchange.WebAPI;
-import edu.illinois.stackexchange.WebApiInterface;
 
 public class ReviewService {
 	private static class Instance {
@@ -17,7 +16,7 @@ public class ReviewService {
 		return Instance._instance;
 	}
 
-	private WebApiInterface stackExchange = new WebAPI();
+	private WebAPI stackExchange = new WebAPI();
 
 	private User currentUser;
 	private List<ReviewListener> reviewListeners;

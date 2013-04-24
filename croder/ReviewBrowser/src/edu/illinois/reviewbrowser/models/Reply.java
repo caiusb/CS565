@@ -5,11 +5,13 @@ import java.util.List;
 public class Reply {
 	private String text;
 	private List<Comment> comments;
+
+	public Reply(String text) {
+
+		this.text = text;
+	}
 	
-	
-	public Reply(String text)
-	{
-		
-		this.text=text;
+	public String getText(){
+		return text;
 	}
 }

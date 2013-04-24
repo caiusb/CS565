@@ -10,19 +10,22 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.part.ViewPart;
 
-import edu.illinois.reviewbrowser.models.StackOverflowPostFormatter;
+import edu.illinois.reviewbrowser.models.Reply;
 import edu.illinois.reviewbrowser.models.Review;
 import edu.illinois.reviewbrowser.models.ReviewListener;
 import edu.illinois.reviewbrowser.models.ReviewService;
@@ -43,6 +46,8 @@ public class ReviewBrowserView extends ViewPart {
 	private SashForm sash;
 
 	private Composite login;
+
+	private Composite replyParent;
 
 	public ReviewBrowserView() {
 		/*ReviewService.getInstance().addReview("title", new Content());
@@ -109,11 +114,16 @@ public class ReviewBrowserView extends ViewPart {
 	}
 
 	private void addCommentViewer(SashForm sash) {
-		replyViewer = new TreeViewer(sash, SWT.BORDER | SWT.MULTI
+		//initially we wanted to show the comments in a tree
+		/*replyViewer = new TreeViewer(sash, SWT.BORDER | SWT.MULTI
 				| SWT.H_SCROLL | SWT.V_SCROLL);
 		replyViewer.setContentProvider(new ReplyViewerContentProvider());
 		replyViewer.setLabelProvider(new ReplyViewerLabelProvider());
-		replyViewer.setInput(new ArrayList<>());
+		replyViewer.setInput(new ArrayList<>());*/
+		
+		//this will hold the browsers for each comment
+		replyParent = new Composite(sash, SWT.NONE);
+		replyParent.setLayout(new RowLayout(SWT.VERTICAL));
 	}
 
 	private void addReviewViewer(SashForm sash) {
@@ -142,8 +152,26 @@ public class ReviewBrowserView extends ViewPart {
 				ISelection selection = reviewViewer.getSelection();
 				Review review = (Review) ((IStructuredSelection) selection)
 						.getFirstElement();
+				
+				ReviewService.getInstance().updateReplies();
+				
+				showRepliesForReview(review);
+			}
 
-				//replyViewer.setInput(review.getReplies());
+			private void showRepliesForReview(Review review) {
+				
+				//kill previous kids
+				for (Control child : replyParent.getChildren()) {
+					child.dispose();
+				}
+				
+				for (Reply reply : review.getReplies()) {
+					Browser b = new Browser(replyParent, SWT.NONE);
+					//b.setJavascriptEnabled(true);
+					b.setText(reply.getText());
+				}
+				
+				replyParent.layout(true);
 			}
 		});
 	}
