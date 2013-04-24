@@ -99,7 +99,6 @@ public class ReviewBrowserView extends ViewPart {
         // the sash with reviews and replies
         addReviewCommentSash(parent);
         
-
 		stackLayout.topControl = login;
 		parent.layout();
 	}
@@ -134,7 +133,7 @@ public class ReviewBrowserView extends ViewPart {
 		reviewViewer.setInput(ReviewService.getInstance().getReviews());
 
 		// Create the help context id for the reviewViewer's control
-		hookDoubleClickAction();
+		//hookDoubleClickAction();
 
 		ReviewService.getInstance().registerReviewListener(
 				new ReviewListener() {
