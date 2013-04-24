@@ -10,6 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.eclipse.core.resources.IMarker;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.jdt.core.IJavaElement;
+import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.jface.text.TextSelection;
+
 import edu.illinois.codeselector.models.snippets.Snippet;
 import edu.illinois.stackexchange.DumbApi;
 import edu.illinois.stackexchange.WebAPI;
@@ -77,8 +84,24 @@ public class ReviewService {
 
 		List<Review> userReviews = reviews.get(currentUser);
 		userReviews.add(review);
+		createMaker(review);
 
 		notifyReviewListeners();
+	}
+
+	private void createMaker(Review review) {
+		List<Snippet> snippets = review.getSnippets();
+		for (Snippet snippet : snippets) {
+			IJavaElement javaElement = snippet.getJavaElementForSnippet();
+			try {
+				IResource resource = javaElement.getCorrespondingResource();
+				IMarker marker = resource.createMarker("edu.illinois.croder.snippetMarker");
+				marker.setAttribute(IMarker.MESSAGE, review.getTitle());
+				marker.setAttribute(IMarker.CHAR_START, 0);
+				marker.setAttribute(IMarker.CHAR_END, 0);
+			} catch (CoreException e) {
+			}
+		}
 	}
 
 	public List<Review> getReviews() {
