@@ -15,7 +15,7 @@ import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.layout.RowLayout;
+import org.eclipse.swt.layout.RowData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
@@ -78,7 +78,7 @@ public class ReviewBrowserView extends ViewPart {
         emailText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
         
         Label passwordLavel = new Label(login, SWT.None);
-        passwordLavel.setText("User Name: ");
+        passwordLavel.setText("Password: ");
         
         final Text passWordText = new Text(login, SWT.PASSWORD | SWT.BORDER);
         passWordText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
@@ -124,10 +124,9 @@ public class ReviewBrowserView extends ViewPart {
 		
 		//this will hold the browsers for each comment
 		replyParent = new Composite(sash, SWT.NONE);
-		RowLayout layout = new RowLayout(SWT.VERTICAL);
-		layout.pack = true;
+		replyParent.setLayoutData(new GridData(GridData.FILL_BOTH));
 		
-		replyParent.setLayout(layout);
+		replyParent.setLayout(new GridLayout());
 	}
 
 	private void addReviewViewer(SashForm sash) {
@@ -174,7 +173,8 @@ public class ReviewBrowserView extends ViewPart {
 				}
 				
 				for (Reply reply : review.getReplies()) {
-					Browser b = new Browser(replyParent, SWT.NONE);
+					Browser b = new Browser(replyParent, SWT.BORDER);
+					b.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 					b.setJavascriptEnabled(true);
 					b.setText(reply.getText());
 				}

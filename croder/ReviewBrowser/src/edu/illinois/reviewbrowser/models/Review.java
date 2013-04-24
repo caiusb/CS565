@@ -49,7 +49,7 @@ public class Review implements Serializable{
 	public List<Reply> getReplies() {
 		List<Reply> r = new ArrayList<>();
 		
-		r.add(new Reply("first comment"));
+		r.add(new Reply("first comment\nfirst comment\nfirst comment\nfirst comment\nfirst comment\nfirst comment"));
 		r.add(new Reply("second comment"));
 		
 		return r;
