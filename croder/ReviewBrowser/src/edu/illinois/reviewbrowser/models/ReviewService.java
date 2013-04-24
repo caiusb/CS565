@@ -11,7 +11,9 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 import edu.illinois.codeselector.models.snippets.Snippet;
+import edu.illinois.stackexchange.DumbApi;
 import edu.illinois.stackexchange.WebAPI;
+import edu.illinois.stackexchange.WebApiInterface;
 
 public class ReviewService {
 	private static final String PERSIST_FILE = "reviewPersistence";
@@ -24,7 +26,7 @@ public class ReviewService {
 		return Instance._instance;
 	}
 
-	private WebAPI stackExchange = new WebAPI();
+	private WebApiInterface stackExchange = new DumbApi();
 
 	private User currentUser;
 	private List<ReviewListener> reviewListeners;
