@@ -115,12 +115,6 @@ public class ReviewBrowserView extends ViewPart {
 	}
 
 	private void addCommentViewer(SashForm sash) {
-		//initially we wanted to show the comments in a tree
-		/*replyViewer = new TreeViewer(sash, SWT.BORDER | SWT.MULTI
-				| SWT.H_SCROLL | SWT.V_SCROLL);
-		replyViewer.setContentProvider(new ReplyViewerContentProvider());
-		replyViewer.setLabelProvider(new ReplyViewerLabelProvider());
-		replyViewer.setInput(new ArrayList<>());*/
 		
 		//this will hold the browsers for each comment
 		replyParent = new Composite(sash, SWT.NONE);
@@ -160,7 +154,7 @@ public class ReviewBrowserView extends ViewPart {
 				Review review = (Review) ((IStructuredSelection) selection)
 						.getFirstElement();
 				
-				//ReviewService.getInstance().updateReplies();
+				ReviewService.getInstance().updateReplies();
 				
 				showRepliesForReview(review);
 			}
@@ -176,6 +170,7 @@ public class ReviewBrowserView extends ViewPart {
 					Browser b = new Browser(replyParent, SWT.BORDER);
 					b.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 					b.setJavascriptEnabled(true);
+
 					b.setText(reply.getText());
 				}
 				

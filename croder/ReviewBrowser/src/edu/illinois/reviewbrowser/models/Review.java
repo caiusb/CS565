@@ -52,7 +52,7 @@ public class Review implements Serializable{
 		r.add(new Reply("first comment\nfirst comment\nfirst comment\nfirst comment\nfirst comment\nfirst comment"));
 		r.add(new Reply("second comment"));
 		
-		return r;
+		return replies;
 	}
 
 	public String getTitle() {

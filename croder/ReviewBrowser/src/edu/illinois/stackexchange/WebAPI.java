@@ -9,7 +9,6 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
-import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
@@ -66,13 +65,15 @@ public class WebAPI implements WebApiInterface {
 
 	public String postQuestion(String title, String content) {
 
-		/*try {
+		try {
 			page = webClient.getPage("http://codereview.stackexchange.com/questions/ask");
 			((HtmlTextInput) page.getElementById("title"))
 					.setValueAttribute(title);
 			((HtmlTextArea) page.getElementById("wmd-input"))
 					.setTextContent(content);
 			page = ((HtmlElement) page.getElementById("submit-button")).click();
+			
+			System.err.println("posted questions");
 			
 			return page.getBaseURI();
 
@@ -94,9 +95,9 @@ public class WebAPI implements WebApiInterface {
 			System.out.println("General exception thrown:" + e.getMessage());
 			e.printStackTrace();
 
-		}*/
+		}
 		
-		System.out.println(title + "\n" + content);
+		System.err.println(title + "\n" + content);
 		
 		return "";
 	}
