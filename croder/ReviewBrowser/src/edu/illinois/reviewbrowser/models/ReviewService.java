@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
+import edu.illinois.codeselector.models.snippets.Snippet;
 import edu.illinois.stackexchange.WebAPI;
 
 public class ReviewService {
@@ -43,9 +44,17 @@ public class ReviewService {
 		}
 	}
 
-	public void addReview(String title, Content content) {
-		String url = stackExchange.postQuestion(title, content.toString());
-		Review review = new Review(url, title);
+	/**
+	 * 
+	 * @param title - Review title
+	 * @param mainComment - Main title of the review. What it request. Review Checklists
+	 * @param snippets - Code snippets annotated with explanations
+	 */
+	public void addReview(String title, String mainComment, List<Snippet> snippets) {
+		
+		Review review = new Review(title, mainComment, snippets);
+		String url = stackExchange.postQuestion(title, review.formatForPost());
+		review.setURL(url);
 
 		List<Review> userReviews = reviews.get(currentUser);
 		userReviews.add(review);

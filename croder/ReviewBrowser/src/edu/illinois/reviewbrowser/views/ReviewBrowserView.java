@@ -22,7 +22,7 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.part.ViewPart;
 
-import edu.illinois.reviewbrowser.models.Content;
+import edu.illinois.reviewbrowser.models.StackOverflowPostFormatter;
 import edu.illinois.reviewbrowser.models.Review;
 import edu.illinois.reviewbrowser.models.ReviewListener;
 import edu.illinois.reviewbrowser.models.ReviewService;
