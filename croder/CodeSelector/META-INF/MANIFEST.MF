@@ -15,4 +15,3 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: edu.illinois.codeselector.models,
  edu.illinois.codeselector.models.snippets
-Import-Package: org.eclipse.ui.texteditor

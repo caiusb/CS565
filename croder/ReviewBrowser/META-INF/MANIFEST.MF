@@ -136,3 +136,4 @@ Bundle-ClassPath: .,
  lib/xercesImpl-2.10.0.jar,
  lib/xml-apis-1.4.01.jar
 Export-Package: edu.illinois.reviewbrowser.models
+Import-Package: org.eclipse.ui.texteditor

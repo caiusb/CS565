@@ -54,55 +54,6 @@
          </command>
       </menuContribution>
    </extension>
-    <extension
-          id="edu.illinois.croder.snippetMarker"
-          name="SnippetMarker"
-          point="org.eclipse.core.resources.markers">
-       <super
-             type="org.eclipse.core.resources.textmarker">
-       </super>
-       <persistent
-             value="false">
-       </persistent>
-       <super
-             type="org.eclipse.core.resources.problemmarker">
-       </super>
-    </extension>
-    <extension
-    	  id="edu.illinois.croder.markerAnnotation"
-    	  name="Review Marker Annotation"
-          point="org.eclipse.ui.editors.annotationTypes">
-       <type
-             markerSeverity="1"
-             markerType="edu.illinois.croder.snippetMarker"
-             name="edu.illinois.croder.markerAnnotation"
-             super="org.eclipse.ui.workbench.texteditor.info">
-       </type>
-    </extension>
-    <extension
-          id="edu.illinois.croder.markerAnnotationSpecification"
-          name="Review"
-          point="org.eclipse.ui.editors.markerAnnotationSpecification">
-       <specification
-          annotationType="edu.illinois.croder.markerAnnotation"
-          colorPreferenceKey="croder.color"
-          colorPreferenceValue="0,255,0"
-          contributesToHeader="true"
-          includeOnPreferencePage="true"
-          icon="icons/bubble.gif"
-          label="Review"
-          overviewRulerPreferenceKey="croder.rulers.overview"
-          overviewRulerPreferenceValue="true"
-          presentationLayer="0"
-          symbolicIcon="warning"
-          textPreferenceKey="croder.text"
-          textPreferenceValue="true"
-          textStylePreferenceKey="croder.textStylePreference"
-          textStylePreferenceValue="BOX"
-          verticalRulerPreferenceKey="croder.rulers.vertical"
-          verticalRulerPreferenceValue="true">
-    </specification>
-    </extension>
-   
+    
 
 </plugin>
