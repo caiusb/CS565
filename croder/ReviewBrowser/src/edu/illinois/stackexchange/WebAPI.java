@@ -44,7 +44,7 @@ public class WebAPI implements WebApiInterface {
 			page = ((HtmlElement) page.getElementById("signIn")).click();
 
 			System.out.println(page.getWebResponse().getContentAsString()
-					.contains("kernel32"));
+					.contains("aldur"));
 
 		} catch (FailingHttpStatusCodeException e1) {
 			System.out.println("FailingHttpStatusCodeException thrown:"

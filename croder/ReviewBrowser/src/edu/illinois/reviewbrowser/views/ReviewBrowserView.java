@@ -77,10 +77,10 @@ public class ReviewBrowserView extends ViewPart {
         final Text emailText = new Text(login, SWT.BORDER);
         emailText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
         
-        Label passwordLavel = new Label(login, SWT.NULL);
+        Label passwordLavel = new Label(login, SWT.None);
         passwordLavel.setText("User Name: ");
         
-        final Text passWordText = new Text(login, SWT.BORDER);
+        final Text passWordText = new Text(login, SWT.PASSWORD | SWT.BORDER);
         passWordText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
         
         Button loginButton = new Button(login, SWT.PUSH);
@@ -90,7 +90,7 @@ public class ReviewBrowserView extends ViewPart {
         	
 			@Override
 			public void handleEvent(Event event) {
-				//ReviewService.getInstance().authenticate(emailText.getText().trim(), passWordText.getText().trim());
+				ReviewService.getInstance().authenticate(emailText.getText().trim(), passWordText.getText().trim());
 				stackLayout.topControl = sash;
 				parent.layout();
 			}
