@@ -58,23 +58,24 @@
           name="Review"
           point="org.eclipse.ui.editors.markerAnnotationSpecification">
        <specification
-          annotationType="edu.illinois.croder.markerAnnotation"
-          colorPreferenceKey="croder.color"
-          colorPreferenceValue="0,255,0"
-          contributesToHeader="true"
-          includeOnPreferencePage="true"
-          icon="icons/bubble.gif"
-          label="Review"
-          overviewRulerPreferenceKey="croder.rulers.overview"
-          overviewRulerPreferenceValue="true"
-          presentationLayer="0"
-          symbolicIcon="warning"
-          textPreferenceKey="croder.text"
-          textPreferenceValue="true"
-          textStylePreferenceKey="croder.textStylePreference"
-          textStylePreferenceValue="BOX"
-          verticalRulerPreferenceKey="croder.rulers.vertical"
-          verticalRulerPreferenceValue="true">
+             annotationType="edu.illinois.croder.markerAnnotation"
+             colorPreferenceKey="croder.color"
+             colorPreferenceValue="0,255,0"
+             contributesToHeader="true"
+             highlightPreferenceValue="true"
+             icon="icons/bubble.gif"
+             includeOnPreferencePage="true"
+             label="Review"
+             overviewRulerPreferenceKey="croder.rulers.overview"
+             overviewRulerPreferenceValue="true"
+             presentationLayer="0"
+             symbolicIcon="warning"
+             textPreferenceKey="croder.text"
+             textPreferenceValue="true"
+             textStylePreferenceKey="croder.textStylePreference"
+             textStylePreferenceValue="BOX"
+             verticalRulerPreferenceKey="croder.rulers.vertical"
+             verticalRulerPreferenceValue="true">
     </specification>
     </extension>   
    
