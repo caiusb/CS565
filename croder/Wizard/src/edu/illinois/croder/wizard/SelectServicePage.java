@@ -39,5 +39,4 @@ public class SelectServicePage extends WizardPage {
 		
 		setControl(composite);
 	}
-
 }

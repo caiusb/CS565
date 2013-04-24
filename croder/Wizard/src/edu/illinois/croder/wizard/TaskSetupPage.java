@@ -10,6 +10,9 @@ import org.eclipse.swt.widgets.Text;
 
 public class TaskSetupPage extends WizardPage {
 
+	private Text descriptionField;
+	private Text titleField;
+
 	protected TaskSetupPage() {
 		super("Task setup page");
 		setTitle("Task setup");
@@ -35,12 +38,14 @@ public class TaskSetupPage extends WizardPage {
 		Label label = new Label(labelComposite, SWT.NONE);
 		label.setText("Please describe your task:");
 
-		Composite descriptionTextComposite = new Composite(labelComposite, SWT.NONE);
+		Composite descriptionTextComposite = new Composite(labelComposite,
+				SWT.NONE);
 		descriptionTextComposite.setLayout(new GridLayout(1, true));
-		descriptionTextComposite.setLayoutData(new GridData(GridData.FILL_BOTH));
-		Text titleField = new Text(descriptionTextComposite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL
-				| SWT.WRAP);
-		titleField.setLayoutData(new GridData(GridData.FILL_BOTH));
+		descriptionTextComposite
+				.setLayoutData(new GridData(GridData.FILL_BOTH));
+		descriptionField = new Text(descriptionTextComposite, SWT.BORDER
+				| SWT.MULTI | SWT.V_SCROLL | SWT.WRAP);
+		descriptionField.setLayoutData(new GridData(GridData.FILL_BOTH));
 	}
 
 	private void makeTitle(Composite composite) {
@@ -52,9 +57,18 @@ public class TaskSetupPage extends WizardPage {
 
 		Composite titleTextComposite = new Composite(titleComposite, SWT.NONE);
 		titleTextComposite.setLayout(new GridLayout(1, true));
-		titleTextComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		Text titleField = new Text(titleTextComposite, SWT.BORDER);
+		titleTextComposite
+				.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		titleField = new Text(titleTextComposite, SWT.BORDER);
 		titleField.setLayoutData(new GridData(GridData.FILL_BOTH));
+	}
+
+	public String getTitle() {
+		return titleField.getText();
+	}
+
+	public String getDescription() {
+		return descriptionField.getText();
 	}
 
 }

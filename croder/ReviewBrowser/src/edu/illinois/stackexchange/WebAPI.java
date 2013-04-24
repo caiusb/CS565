@@ -66,7 +66,7 @@ public class WebAPI implements WebApiInterface {
 
 	public String postQuestion(String title, String content) {
 
-		try {
+		/*try {
 			page = webClient.getPage("http://codereview.stackexchange.com/questions/ask");
 			((HtmlTextInput) page.getElementById("title"))
 					.setValueAttribute(title);
@@ -94,7 +94,10 @@ public class WebAPI implements WebApiInterface {
 			System.out.println("General exception thrown:" + e.getMessage());
 			e.printStackTrace();
 
-		}
+		}*/
+		
+		System.out.println(title + "\n" + content);
+		
 		return "";
 	}
 	
