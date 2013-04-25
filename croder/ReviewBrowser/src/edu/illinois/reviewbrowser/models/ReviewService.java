@@ -94,7 +94,8 @@ public class ReviewService {
 		for (Snippet snippet : snippets) {
 			IJavaElement javaElement = snippet.getJavaElementForSnippet();
 			try {
-				IResource resource = javaElement.getCorrespondingResource();
+				IJavaElement compilationUnit = javaElement.getAncestor(IJavaElement.COMPILATION_UNIT);
+				IResource resource = compilationUnit.getCorrespondingResource();
 				IMarker marker = resource.createMarker("edu.illinois.croder.snippetMarker");
 				marker.setAttribute(IMarker.MESSAGE, review.getTitle());
 				marker.setAttribute(IMarker.CHAR_START, snippet.getOffset());
