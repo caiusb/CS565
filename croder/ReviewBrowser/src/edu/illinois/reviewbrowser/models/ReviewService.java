@@ -79,8 +79,10 @@ public class ReviewService {
 			List<Snippet> snippets) {
 
 		Review review = new Review(title, mainComment, snippets);
-		String url = stackExchange.postQuestion(title, review.formatForPost());
+		String url = stackExchange.postQuestion(title, review.formatForPost(), null);
 		review.setURL(url);
+		
+		System.err.println(review.formatForPost());
 
 		List<Review> userReviews = reviews.get(currentUser);
 		userReviews.add(review);
