@@ -21,8 +21,8 @@ public class StackOverflowPostFormatter implements Serializable{
 		writeParagraph(result, review.getMainComment());
 
 		for (Snippet snippet : review.getSnippets()) {
-			writeParagraph(result, snippet.getComment());
 			writeCodeSnippet(result, snippet.getCode());
+			writeParagraph(result, snippet.getComment());
 		}
 
 		return result.toString();
