@@ -122,15 +122,18 @@ public class WebAPI implements WebApiInterface {
                 System.out.println("Failed CAPTCHA");
             }
             
+            System.out.println(captcha.text);
             ((HtmlInput) captchaPage.getElementById("recaptcha_response_field")).setValueAttribute(captcha.text);
             captchaPage = ((HtmlElement)captchaPage.getElementByName("submit")).click();
             
+            System.out.println(captchaPage.getFullyQualifiedUrl(""));
             String confirmationCode= captchaPage.getWebResponse().getContentAsString().split("<textarea")[1].split(">")[1].split("<")[0];
 			
             ((HtmlTextArea) page.getElementByName("recaptcha_challenge_field")).setTextContent(confirmationCode);
             
             page= ((HtmlElement)page.getElementById("btn-captcha")).click();
-
+            
+            System.out.println( page.getFullyQualifiedUrl(""));
             return page.getFullyQualifiedUrl("").toString();
 
 
