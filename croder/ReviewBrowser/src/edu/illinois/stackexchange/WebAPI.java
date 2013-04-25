@@ -44,7 +44,7 @@ public class WebAPI implements WebApiInterface {
 		
 		String title = "Database Design process when using Hibernate";
 		String content= "My question is, when using ORM frameworks like Hibernate, does it makes sense for the App Developer to work with the person doing the database design?";
-		test.postQuestion(title, content);
+		test.postQuestion(title, content, null);
 	}
 	
 	public void login(String email, String pass) {
@@ -85,7 +85,7 @@ public class WebAPI implements WebApiInterface {
 		}
 	}
 
-	public String postQuestion(String title, String content) {
+	public String postQuestion(String title, String content, List<String> tags) {
 
 		try {
 			page = webClient.getPage("http://codereview.stackexchange.com/questions/ask");
@@ -98,7 +98,16 @@ public class WebAPI implements WebApiInterface {
 			
 			
             HtmlTextInput textField3 = (HtmlTextInput) page.getElementById("tagnames");
-            textField3.setValueAttribute("java");
+            int i=0;
+            StringBuilder str= new StringBuilder();
+            for (String tag : tags) {
+				if(i==0)
+					str.append(tag);
+				else
+					str.append(","+tag);
+				i++;
+			}
+            textField3.setValueAttribute(str.toString());
 			
 			page = ((HtmlElement) page.getElementById("submit-button")).click();
 			System.out.println(page.getFullyQualifiedUrl(""));
