@@ -29,10 +29,13 @@ public class StackOverflowPostFormatter implements Serializable{
 	}
 
 	private void writeCodeSnippet(StringBuilder result, String code) {
-		result.append("<code><pre>" + code + "</code></pre>");
+		//result.append("<code><pre>" + code + "</code></pre>");
+		result.append(code);
+		result.append("\n");
 	}
 
 	private void writeParagraph(StringBuilder result, String mainComment) {
-		result.append("<p>" + mainComment + "</p>");
+		//result.append("<p>" + mainComment + "</p>\n");
+		result.append(mainComment);
 	}
 }

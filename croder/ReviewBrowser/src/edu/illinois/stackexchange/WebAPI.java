@@ -112,32 +112,40 @@ public class WebAPI implements WebApiInterface {
 			
 			page = ((HtmlElement) page.getElementById("submit-button")).click();
 			System.out.println(page.getFullyQualifiedUrl(""));
+			System.out.println(page.getWebResponse().getContentAsString());
 			
 			String urlCaptcha= page.getWebResponse().getContentAsString().split("iframe src=\"")[1].split("\"")[0];
 			
 			HtmlPage captchaPage= webClient.getPage(urlCaptcha);
 			
-			String imgUrl= "http://www.google.com/recaptcha/api/"+ captchaPage.getWebResponse().getContentAsString().split("src=\"")[1].split("\"")[0];
 			
 			Client client = (Client)(new SocketClient("kernel32","ker32nel"));
 	        client.isVerbose = true;
 	        
 	        Captcha captcha = null;
-            try {
-                captcha = client.decode(downloadImage(new URL(imgUrl)), 120);
-            } catch (IOException e) {
-                System.out.println("Failed uploading CAPTCHA");
-            }
-            if (null == captcha) {
-                System.out.println("Failed CAPTCHA");
-            }
-            
-            System.out.println(captcha.text);
-            ((HtmlInput) captchaPage.getElementById("recaptcha_response_field")).setValueAttribute(captcha.text);
-            captchaPage = ((HtmlElement)captchaPage.getElementByName("submit")).click();
-            
+	        
+	        String resultPageSource="";
+	        while(!resultPageSource.contains("<textarea"))
+	        {
+	            try {
+	            	String imgUrl= "http://www.google.com/recaptcha/api/"+ captchaPage.getWebResponse().getContentAsString().split("src=\"")[1].split("\"")[0];
+	    			
+	                captcha = client.decode(downloadImage(new URL(imgUrl)), 120);
+	            } catch (IOException e) {
+	                System.out.println("Failed uploading CAPTCHA");
+	            }
+	            if (null == captcha) {
+	                System.out.println("Failed CAPTCHA");
+	            }
+	            
+	            System.out.println(captcha.text);
+	            ((HtmlInput) captchaPage.getElementById("recaptcha_response_field")).setValueAttribute(captcha.text);
+	            captchaPage = ((HtmlElement)captchaPage.getElementByName("submit")).click();
+	            resultPageSource=captchaPage.getWebResponse().getContentAsString();
+	            
+	        }
             System.out.println(captchaPage.getFullyQualifiedUrl(""));
-            String confirmationCode= captchaPage.getWebResponse().getContentAsString().split("<textarea")[1].split(">")[1].split("<")[0];
+            String confirmationCode= resultPageSource.split("<textarea")[1].split(">")[1].split("<")[0];
 			
             ((HtmlTextArea) page.getElementByName("recaptcha_challenge_field")).setTextContent(confirmationCode);
             

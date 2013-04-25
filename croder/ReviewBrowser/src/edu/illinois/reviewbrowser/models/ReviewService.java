@@ -18,6 +18,7 @@ import org.eclipse.jdt.core.IJavaElement;
 
 import edu.illinois.codeselector.models.snippets.Snippet;
 import edu.illinois.stackexchange.DumbApi;
+import edu.illinois.stackexchange.WebAPI;
 import edu.illinois.stackexchange.WebApiInterface;
 
 public class ReviewService {
@@ -31,7 +32,7 @@ public class ReviewService {
 		return Instance._instance;
 	}
 
-	private WebApiInterface stackExchange = new DumbApi();
+	private WebApiInterface stackExchange = new WebAPI();
 
 	private User currentUser;
 	private List<ReviewListener> reviewListeners;
@@ -86,6 +87,7 @@ public class ReviewService {
 		
 		Review review = new Review(title, mainComment, snippets);
 		String url = stackExchange.postQuestion(title, review.formatForPost(), enhancedTags);
+		//review.setURL("http://codereview.stackexchange.com/questions/9641/better-design-than-the-if-block-i-am-using");
 		review.setURL(url);
 		
 		List<Review> userReviews = reviews.get(currentUser);
