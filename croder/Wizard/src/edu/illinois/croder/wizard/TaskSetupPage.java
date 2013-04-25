@@ -4,6 +4,7 @@ import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
@@ -12,6 +13,7 @@ public class TaskSetupPage extends WizardPage {
 
 	private Text descriptionField;
 	private Text titleField;
+	private Combo tagCombo;
 
 	protected TaskSetupPage() {
 		super("Task setup page");
@@ -27,8 +29,21 @@ public class TaskSetupPage extends WizardPage {
 
 		makeTitle(composite);
 		makeTaskDescription(composite);
+		
+		makeTagField(composite);
 
 		setControl(composite);
+	}
+
+	private void makeTagField(Composite composite) {
+		Composite tagComposite = new Composite(composite, SWT.NONE);
+		tagComposite.setLayout(new GridLayout(2, false));
+		tagComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		
+		Label label = new Label(tagComposite, SWT.NONE);
+		label.setText("Please select your tag");
+		tagCombo = new Combo(tagComposite, SWT.READ_ONLY);
+		tagCombo.setItems(new String[]{"readability", "refactoring", "performance", "optimization", "code-smell", "design", "best-practice"});
 	}
 
 	private void makeTaskDescription(Composite composite) {
@@ -69,6 +84,10 @@ public class TaskSetupPage extends WizardPage {
 
 	public String getDescription() {
 		return descriptionField.getText();
+	}
+	
+	public String getTag() {
+		return tagCombo.getText();
 	}
 
 }
