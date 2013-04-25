@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -14,12 +15,9 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IJavaElement;
-import org.eclipse.jdt.core.JavaModelException;
-import org.eclipse.jface.text.TextSelection;
 
 import edu.illinois.codeselector.models.snippets.Snippet;
 import edu.illinois.stackexchange.DumbApi;
-import edu.illinois.stackexchange.WebAPI;
 import edu.illinois.stackexchange.WebApiInterface;
 
 public class ReviewService {
@@ -76,14 +74,20 @@ public class ReviewService {
 	 *            - Code snippets annotated with explanations
 	 */
 	public void addReview(String title, String mainComment,
-			List<Snippet> snippets) {
+			List<Snippet> snippets, List<String> tags) {
 
+		LinkedList<String> enhancedTags = new LinkedList<>();
+		
+		for (String tag : tags) {
+			if (!tag.equals(""))
+				enhancedTags.add(tag);
+		}
+		enhancedTags.addFirst("java");
+		
 		Review review = new Review(title, mainComment, snippets);
-		String url = stackExchange.postQuestion(title, review.formatForPost(), null);
+		String url = stackExchange.postQuestion(title, review.formatForPost(), enhancedTags);
 		review.setURL(url);
 		
-		System.err.println(review.formatForPost());
-
 		List<Review> userReviews = reviews.get(currentUser);
 		userReviews.add(review);
 		createMakers(review);

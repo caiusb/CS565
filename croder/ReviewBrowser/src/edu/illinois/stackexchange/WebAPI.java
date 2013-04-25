@@ -98,6 +98,7 @@ public class WebAPI implements WebApiInterface {
 			
 			
             HtmlTextInput textField3 = (HtmlTextInput) page.getElementById("tagnames");
+            
             int i=0;
             StringBuilder str= new StringBuilder();
             for (String tag : tags) {
