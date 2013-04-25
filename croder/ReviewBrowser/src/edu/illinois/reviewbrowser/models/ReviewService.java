@@ -10,8 +10,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.eclipse.core.resources.IMarker;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.jdt.core.IJavaElement;
+import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.jface.text.TextSelection;
+
 import edu.illinois.codeselector.models.snippets.Snippet;
+import edu.illinois.stackexchange.DumbApi;
 import edu.illinois.stackexchange.WebAPI;
+import edu.illinois.stackexchange.WebApiInterface;
 
 public class ReviewService {
 	private static final String PERSIST_FILE = "reviewPersistence";
@@ -24,7 +33,7 @@ public class ReviewService {
 		return Instance._instance;
 	}
 
-	private WebAPI stackExchange = new WebAPI();
+	private WebApiInterface stackExchange = new DumbApi();
 
 	private User currentUser;
 	private List<ReviewListener> reviewListeners;
@@ -75,8 +84,26 @@ public class ReviewService {
 
 		List<Review> userReviews = reviews.get(currentUser);
 		userReviews.add(review);
+		createMakers(review);
 
 		notifyReviewListeners();
+	}
+
+	private void createMakers(Review review) {
+		List<Snippet> snippets = review.getSnippets();
+		for (Snippet snippet : snippets) {
+			IJavaElement javaElement = snippet.getJavaElementForSnippet();
+			try {
+				IJavaElement compilationUnit = javaElement.getAncestor(IJavaElement.COMPILATION_UNIT);
+				IResource resource = compilationUnit.getCorrespondingResource();
+				IMarker marker = resource.createMarker("edu.illinois.croder.snippetMarker");
+				marker.setAttribute(IMarker.MESSAGE, review.getTitle());
+				marker.setAttribute(IMarker.CHAR_START, snippet.getOffset());
+				marker.setAttribute(IMarker.CHAR_END, snippet.getOffset()+snippet.getLength());
+				marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_WARNING);
+			} catch (CoreException e) {
+			}
+		}
 	}
 
 	public List<Review> getReviews() {
