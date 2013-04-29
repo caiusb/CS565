@@ -12,6 +12,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.custom.SashForm;
+import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -117,10 +118,11 @@ public class ReviewBrowserView extends ViewPart {
 	private void addCommentViewer(SashForm sash) {
 		
 		//this will hold the browsers for each comment
-		replyParent = new Composite(sash, SWT.NONE);
+		replyParent = new Composite(sash, SWT.H_SCROLL | SWT.V_SCROLL);
 		replyParent.setLayoutData(new GridData(GridData.FILL_BOTH));
 		
-		replyParent.setLayout(new GridLayout());
+		GridLayout layout = new GridLayout();
+		replyParent.setLayout(layout);
 	}
 
 	private void addReviewViewer(SashForm sash) {
@@ -168,7 +170,10 @@ public class ReviewBrowserView extends ViewPart {
 				
 				for (Reply reply : review.getReplies()) {
 					Browser b = new Browser(replyParent, SWT.BORDER);
-					b.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+					GridData layoutData = new GridData(GridData.FILL_HORIZONTAL);
+					layoutData.heightHint = 200;
+					b.setLayoutData(layoutData);
+					
 					b.setJavascriptEnabled(true);
 
 					b.setText(reply.getText());

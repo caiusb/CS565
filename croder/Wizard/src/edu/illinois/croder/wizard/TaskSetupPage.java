@@ -43,7 +43,7 @@ public class TaskSetupPage extends WizardPage {
 		Label label = new Label(tagComposite, SWT.NONE);
 		label.setText("Please select your tag");
 		tagCombo = new Combo(tagComposite, SWT.READ_ONLY);
-		tagCombo.setItems(new String[]{"readability", "refactoring", "performance", "optimization", "code-smell", "design", "best-practice"});
+		tagCombo.setItems(new String[]{"readability", "refactoring", "performance", "optimization", "code-smell", "design", "best-practice", "multithreading"});
 	}
 
 	private void makeTaskDescription(Composite composite) {

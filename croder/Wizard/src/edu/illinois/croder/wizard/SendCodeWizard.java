@@ -1,5 +1,6 @@
 package edu.illinois.croder.wizard;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.jface.wizard.Wizard;
@@ -19,7 +20,10 @@ public class SendCodeWizard extends Wizard {
 		String description = taskSetupPage.getDescription();
 		List<Snippet> snippets = SnippetService.getInstance().getSnippets();
 		
-		ReviewService.getInstance().addReview(title, description, snippets);
+		List<String> tags = new LinkedList<String>();
+		tags.add(taskSetupPage.getTag());
+		
+		ReviewService.getInstance().addReview(title, description, snippets, tags);
 		
 		return true;
 	}
