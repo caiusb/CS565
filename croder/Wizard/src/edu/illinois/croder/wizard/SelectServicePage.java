@@ -26,7 +26,7 @@ public class SelectServicePage extends WizardPage {
 		List<Button> servicesButtons = new ArrayList<Button>();
 		
 		Button button = new Button(composite, SWT.RADIO);
-		button.setText("eDesk");
+		button.setText("oDesk");
 		servicesButtons.add(button);
 		
 		button = new Button(composite, SWT.RADIO);

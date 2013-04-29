@@ -1,5 +1,7 @@
 package edu.illinois.stackexchange;
 
+import java.util.List;
+
 public class DumbApi implements WebApiInterface {
 
 	@Override
@@ -8,7 +10,7 @@ public class DumbApi implements WebApiInterface {
 	}
 
 	@Override
-	public String postQuestion(String title, String content) {
+	public String postQuestion(String title, String content, List<String> tags) {
 		// TODO Auto-generated method stub
 		return "";
 	}

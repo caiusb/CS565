@@ -17,9 +17,11 @@ mturk-api/.project
 *.results
 *.aux
 *.gz
-*.pdf
 *.out
 *.blg
 *.bbl
+*.dvi
+*.fdb_latexmk
+*.fls
 croder/.metadata
 .metadata

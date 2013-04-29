@@ -21,18 +21,21 @@ public class StackOverflowPostFormatter implements Serializable{
 		writeParagraph(result, review.getMainComment());
 
 		for (Snippet snippet : review.getSnippets()) {
-			writeParagraph(result, snippet.getComment());
 			writeCodeSnippet(result, snippet.getCode());
+			writeParagraph(result, snippet.getComment());
 		}
 
 		return result.toString();
 	}
 
 	private void writeCodeSnippet(StringBuilder result, String code) {
-		result.append("<code><pre>" + code + "</code></pre>");
+		//result.append("<code><pre>" + code + "</code></pre>");
+		result.append(code);
+		result.append("\n");
 	}
 
 	private void writeParagraph(StringBuilder result, String mainComment) {
-		result.append("<p>" + mainComment + "</p>");
+		//result.append("<p>" + mainComment + "</p>\n");
+		result.append(mainComment);
 	}
 }
