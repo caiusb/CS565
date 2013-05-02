@@ -1,11 +1,81 @@
-\documentclass[10pt,letterpaper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
+\documentclass[]{sigchi}
+
+% Arabic page numbers for submission. 
+% Remove this line to eliminate page numbers for the camera ready copy
+\pagenumbering{arabic}
+
+
+% Load basic packages
+\usepackage{balance}  % to better equalize the last page
+\usepackage{graphics} % for EPS, load graphicx instead
+\usepackage{times}    % comment if you want LaTeX's default font
+\usepackage{url}      % llt: nicely formatted URLs
+
+% llt: Define a global style for URLs, rather that the default one
+\makeatletter
+\def\url@leostyle{%
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\bf\ttfamily}}}
+\makeatother
+\urlstyle{leo}
+
+
+% To make various LaTeX processors do the right thing with page size.
+\def\pprw{8.5in}
+\def\pprh{11in}
+\special{papersize=\pprw,\pprh}
+\setlength{\paperwidth}{\pprw}
+\setlength{\paperheight}{\pprh}
+\setlength{\pdfpagewidth}{\pprw}
+\setlength{\pdfpageheight}{\pprh}
+
+% Make sure hyperref comes last of your loaded packages, 
+% to give it a fighting chance of not being over-written, 
+% since its job is to redefine many LaTeX commands.
+\usepackage[pdftex]{hyperref}
+\hypersetup{
+pdftitle={SIGCHI Conference Proceedings Format},
+pdfauthor={LaTeX},
+pdfkeywords={SIGCHI, proceedings, archival format},
+bookmarksnumbered,
+pdfstartview={FitH},
+colorlinks,
+citecolor=black,
+filecolor=black,
+linkcolor=black,
+urlcolor=black,
+breaklinks=true,
+}
+
+% create a shortcut to typeset table headings
+\newcommand\tabhead[1]{\small\textbf{#1}}
+
 
 \title{Croder \\ Bringing the Knowledge of the Crowds into the IDE}
 \author{Semih Okur \and Mihai Codoban \and Caius Brindescu \and Kyungho Lee \and Shuo Yuan}
+\numberofauthors{5}
+\author{
+  \alignauthor Semih Okur\\
+    \affaddr{University of Illinois at Urbana-Champaign}\\
+    \affaddr{Urbana, IL}\\
+    \email{okur2@illinois.edu}
+  \alignauthor Mihai Codoban\\
+    \affaddr{University of Illinois at Urbana-Champaign}\\
+    \affaddr{Urbana, IL}\\
+    \email{codo@illinois.edu}
+  \alignauthor Caius Brindescu\\
+    \affaddr{University of Illinois at Urbana-Champaign}\\
+    \affaddr{Urbana, IL}\\
+    \email{brind@illinois.edu}
+   \alignauthor Kyungho Lee\\
+    \affaddr{University of Illinois at Urbana-Champaign}\\
+    \affaddr{Urbana, IL}\\
+    \email{klee141@illinois.edu}
+  \alignauthor Shuo Yuan\\
+    \affaddr{University of Illinois at Urbana-Champaign}\\
+    \affaddr{Urbana, IL}\\
+    \email{syuan20@illinois.edu}
+}
+
 
 \begin{document}
 
