@@ -114,7 +114,18 @@ concept of concept of code review. It is this platform that we have used to test
 \section{Stackexchange code review characteristics}
 \section{Interface with StackExchange}
 \section{Review management in the IDE}
+
 \section{Crowd sourced peer review creation}
+
+For creating of the task we chose to implement a wizard. One of the main features is that you can ask
+for \emph{structured} code review. The user can select a criteria under which code review should be
+performed (performance, design, readability etc.). This helps reviews in keeping a focus on a given task.
+Also, to make it easier for them to understand the code, we allow the users to add a small note regarding
+the purpose and content of each code snippet. The code snippets are selected directly from the IDE.
+
+In figure~\ref{fig:wizard} we show the design approach we took. While it is a bit crude, it does offer all
+the features and presents the structured approach to creating the task. It is worth mentioning that the user
+has the option to add a general comment at an earlier stage in the wizard.
 
 \begin{figure}[hbt]
 	\includegraphics[width=\columnwidth]{wizard.png}
