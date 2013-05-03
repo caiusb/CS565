@@ -10,6 +10,7 @@
 \usepackage{graphics} % for EPS, load graphicx instead
 \usepackage{times}    % comment if you want LaTeX's default font
 \usepackage{url}      % llt: nicely formatted URLs
+\usepackage{nameref}
 
 
 % llt: Define a global style for URLs, rather that the default one
@@ -118,6 +119,7 @@ From these three candidates for software development micro-tasks we chose to ded
 
 \section{Crowds for software development}
 \label{sec:crowds}
+
 One of the main challenges was finding the appropriate crowd to conduct the code review. One of the
 first options was the Amazon Mechanical Turk. The main problem with this platform is the lack of
 qualified workers. Code Reviewing is a very technical process that requires a large amount of knowledge.
@@ -154,7 +156,7 @@ concept of concept of code review. It is this platform that we have used to test
  In order to track what snippets have been added to the review so far, a view is provided that holds each snippet. Figure \ref{fig:snippetViewer} illustrates this concept.
  
  %TODO fix section reference
- With today's \croder the decision on the code snippets that are to be reviewed falls solely on the responsibility of the programmer. Section~\ref{sec:future} describes a technique which offers suggestions on other possible snippets based on the current ones.
+ With today's \croder the decision on the code snippets that are to be reviewed falls solely on the responsibility of the programmer. The \nameref{sec:future} section describes a technique which offers suggestions on other possible snippets based on the current ones.
  
 \begin{figure}[hbt]
 	\centering
@@ -168,12 +170,6 @@ concept of concept of code review. It is this platform that we have used to test
 	\includegraphics[scale=0.45]{snippetViewer.png}
 \caption{Viewing code snippets}
 \label{fig:snippetViewer}
-\end{figure}
-
-\begin{figure}[hbt]
-	\includegraphics[width=\columnwidth]{wizard.png}
-\caption{Adding comments for each snippet}
-\label{fig:wizard}
 \end{figure}
  
 \section{Crowd sourced peer review creation}
@@ -224,9 +220,9 @@ Section~\ref{sec:future} illustrates several features which can enhance the tool
 
 \begin{figure}[hbt]
 	\centering
-	\includegraphics[scale=0.4]{reviewBrowser.png}
+	\includegraphics[width=\columnwidth]{reviewBrowser.png}
 \caption{Viewing code snippets}
-\label{fig:snippetViewer}
+\label{fig:reviewBrowser}
 \end{figure}
 
 \section{Preliminary user study}
