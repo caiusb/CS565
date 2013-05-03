@@ -12,7 +12,6 @@
 \usepackage{url}      % llt: nicely formatted URLs
 \usepackage{nameref}
 
-
 % llt: Define a global style for URLs, rather that the default one
 \makeatletter
 \def\url@leostyle{%
@@ -51,7 +50,7 @@ breaklinks=true,
 % create a shortcut to typeset table headings
 \newcommand\tabhead[1]{\small\textbf{#1}}
 
-\newcommand{\croder}{\textsc{Croder }}
+\newcommand{\croder}{\textsc{Croder}}
 \newcommand{\ide}{\emph{IDE }}
 \newcommand{\eclipse}{\emph{Eclipse }}
 
@@ -86,6 +85,15 @@ breaklinks=true,
 
 \maketitle
 
+\begin{abstract}
+This paper presents a new way of doing code reviews. Since they take up a lot of time and require
+a great amount to coordination. We propose a new way doing reviews using the crowds. By 
+integrating the \ide{}'s with the review platform we hope to make it easier for developers to review
+code and have code reviews. To test our proposed solution, we have built a new tool, \croder{}, that
+can pot reviews and get results from StackExchange. This integration will help developers post
+tasks without the need of context switching.
+\end{abstract}
+
 \section{Introduction}
 
 
@@ -112,10 +120,10 @@ preliminary used study?
 \section{Why integrate reviews into the IDE}
 
 Interruptions are bad because they break the flow of work and cause more stress \cite{Spolsky,Mark2008}. 
-Also, the interruptions that a developers faces are varied \cite{Czerwinski2004}, so trying to reduce that number
-will bring benefit to the workflow. By integrating the code review submission process into the \ide we can 
-reduce the time of the interruption. Also, because the developer never leaves the context of his work, we hope 
-that the effects of this interruption will be minimal.
+Also, the interruptions that a developers faces are varied \cite{Czerwinski2004}, so a solution that reduces
+the number of interruptions is essential. \cite{Adamczyk2004}. By integrating the code review submission 
+process into the \ide we can  reduce the time of the interruption. Also, because the developer never leaves 
+the context of his work, we hope that the effects of this interruption will be minimal.
 
 Integrating into the \ide has other benefits too. The \ide is the environment where the code lives. By taping into
 this resource we can get a lot more information about what the developer what to review. For example, suppose
