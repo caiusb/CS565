@@ -50,7 +50,7 @@ breaklinks=true,
 % create a shortcut to typeset table headings
 \newcommand\tabhead[1]{\small\textbf{#1}}
 
-\newcommand{\croder}{\textsc{Croder}}
+\newcommand{\croder}{\textsc{Croder }}
 \newcommand{\ide}{\emph{IDE }}
 \newcommand{\eclipse}{\emph{Eclipse }}
 
@@ -105,17 +105,13 @@ An interesting application for crowdsourcing is in collaborative design. Workers
 
 Starting from the previous observation and from related work as well we decided to explore the space of crowdsourced software development tasks. In this regard we cross-referenced the particularities of the crowd with the particularities of software development tasks in order to find suitable candidates. We produced three potential tasks that would be suitable for crowdsourcing: code reviews, test generation and semi-mechanical code transformations.
 
-For the scope of this paper we focused on code reviews for reasons detailed in the 
+For the scope of this paper we choosed to focus on code reviews for reasons detailed in section~\nameref{sec:softcrowd}. In this regard we built a tool, \croder, which integrates with \eclipse to provide crowdsourced code reviews directly in the \ide.  
+With \croder, programmers can build and run the whole process of code reviews directly from the \ide, from selecting code snippets, to posting the review to the crowd, to managing and accessing review outcomes.  
 
-what if progr tasks. integrate with IDE
+In terms of crowd platforms we could not use Mechanical Turk because of the lack of specialized crowds. Instead, we analysed potential replacements like eLance, oDesc and Stackexchange. For reasons further in the paper we chose Stackexchange as the backend of \croder.
 
-specialize on code review
-
-tool
-
-benefit from stack exchange
-
-preliminary used study?
+To evaluate the need for \croder we conducted a study to assess potential user traits and to assess programmer's knowledge of crowdsourcing and code reviews. By means of this study we were then able to build three potential user personas and intuitive UI sketches.
+ 
 
 \section{Why integrate reviews into the IDE}
 
@@ -139,6 +135,7 @@ of the review and make sense of the comments.
 \section{Related work}
 
 \section{Software development for crowds}
+\label{sec:softcrowd}
 
 The main research theme that was explored throughout this project is whether software development is suitable for the crowds. \textit{Are there any software development micro-tasks which can be successfully accomplished in reasonably short time by the crowds?}
 
