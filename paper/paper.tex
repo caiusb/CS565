@@ -117,6 +117,7 @@ There are of course drawbacks and difficulties with this approach. Some tasks co
 From these three candidates for software development micro-tasks we chose to dedicate our efforts on providing support for code reviews. This seems like a natural starting point due to its social characteristics. From the three potential tasks, code reviews require the least amount of specialized, focused knowledge which should make them attractive to a wider audience and could potentially be of most value to the programmer. The latter justification pertains to the fact that tests and code transformations are of modest educational value to the programmer while code reviews aid in self improvement. 
 
 \section{Crowds for software development}
+\label{sec:crowds}
 One of the main challenges was finding the appropriate crowd to conduct the code review. One of the
 first options was the Amazon Mechanical Turk. The main problem with this platform is the lack of
 qualified workers. Code Reviewing is a very technical process that requires a large amount of knowledge.
@@ -223,7 +224,7 @@ Section~\ref{sec:future} illustrates several features which can enhance the tool
 
 \begin{figure}[hbt]
 	\centering
-	\includegraphics[scale=0.3]{reviewBrowser.png}
+	\includegraphics[scale=0.4]{reviewBrowser.png}
 \caption{Viewing code snippets}
 \label{fig:snippetViewer}
 \end{figure}
@@ -233,6 +234,22 @@ Section~\ref{sec:future} illustrates several features which can enhance the tool
 
 \section{Future Work}
 \label{sec:future}
+
+Future work can be done in several directions.
+
+The only platform currently used by \croder is Stackexchange code review due to reasons such as familiarity with the platform, constant activity and most importantly, it represents a crowd that is accustomed to the code review task type.
+Future work in this regard would see \croder gain adapters for other platforms such as eLance or oDesk. On one hand, these platforms have mature APIs and sandboxed testing environments. On the other hand their crowds are not accustomed to micro-tasks.
+
+%TODO fix section reference
+Indeed, as was stated in section~\ref{sec:crowds}, eLance and oDesk crowds perform software outsourcing. Their tasks range from days to months and the compensation from tens to thousands of dollars. If we are to utilize these crowds then we shall have to experiment and see if we can get them accustomed to the micro-tasks of crowdsourcing. This implies that we will have to effectively teach the crowd. We shall have to start with oversized tasks and progressively decrease them in size and scope. We shall have to experiment with task size and compensation amount in order to find the sweet spots.
+
+Automatic evaluation of crowdsourced reviews is also problematic. One cannot simply generate random code snippets of different size and complexity. Code snippets have to have a coherent story behind them otherwise the required specialized workers will not engage in their review.
+
+Relating to code snippets, \croder currently leaves code snippet selection solely in the hands of the programmer. Unfortunately, while collecting the code to be reviewed, the programmer may miss essential snippets that complete the story of the review. We propose a semi automated approach in which \croder would suggest a least amount of additional snippets in order to have a more complete review. There are different solutions we can utilize in order to achieve this goal such as a metric based approach: a dependency and coupling analysis can be performed on the selected code snippets in order to find outside potential snippets that would minimize certain metrics.
+
+In terms of the current implementation, particular code reviews are tied to only one \IDE installation. The feature to share and access the review results with other colleague's \IDE's would be most welcome.
+
+Last but not least, code reviews represent only one possible software development task that can be crowdsourced. We identified several more, such as testing or on demand code transformations. In order to fully bring the knowledge of the crowds into the \IDE, \croder will have to learn how to crowdsource many more tasks, starting with the ones previously mentioned.
 
 %expand bullets from presentation slides
 %snippet selector
