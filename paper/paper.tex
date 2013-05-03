@@ -11,6 +11,7 @@
 \usepackage{times}    % comment if you want LaTeX's default font
 \usepackage{url}      % llt: nicely formatted URLs
 \usepackage{nameref}
+\usepackage{xspace}
 
 % llt: Define a global style for URLs, rather that the default one
 \makeatletter
@@ -50,9 +51,9 @@ breaklinks=true,
 % create a shortcut to typeset table headings
 \newcommand\tabhead[1]{\small\textbf{#1}}
 
-\newcommand{\croder}{\textsc{Croder}}
-\newcommand{\ide}{\emph{IDE }}
-\newcommand{\eclipse}{\emph{Eclipse }}
+\newcommand{\croder}{\textsc{Croder\xspace}}
+\newcommand{\ide}{\emph{IDE\xspace}}
+\newcommand{\eclipse}{\emph{Eclipse\xspace}}
 
 
 \title{Croder: Bringing the Knowledge of the Crowds into the IDE}
@@ -86,10 +87,10 @@ breaklinks=true,
 \maketitle
 
 \begin{abstract}
-This paper presents a new way of doing code reviews. Since they take up a lot of time and require
-a great amount to coordination. We propose a new way doing reviews using the crowds. By 
-integrating the \ide{}'s with the review platform we hope to make it easier for developers to review
-code and have code reviews. To test our proposed solution, we have built a new tool, \croder{}, that
+This paper proposes a new way of doing code reviews. Since they take up a lot of time and require
+a great amount of coordination, we suggest using the crowds to fulfill this task. By 
+integrating the \ide with the review platform we hope to make it easier for developers to review
+code and have code reviews. To test our proposed solution, we have built a new tool, \croder, that
 can pot reviews and get results from StackExchange. This integration will help developers post
 tasks without the need of context switching.
 \end{abstract}
@@ -98,46 +99,46 @@ tasks without the need of context switching.
 \section{Why integrate reviews into the IDE}
 
 Interruptions are bad because they break the flow of work and cause more stress \cite{Spolsky,Mark2008}. 
-Also, the interruptions that a developers faces are varied \cite{Czerwinski2004}, so a solution that reduces
-the number of interruptions is essential. \cite{Adamczyk2004}. By integrating the code review submission 
-process into the \ide we can  reduce the time of the interruption. Also, because the developer never leaves 
+Also, the interruptions that a developers face are varied \cite{Czerwinski2004}, so a solution that reduces
+this number is essential. \cite{Adamczyk2004}. By integrating the code review submission 
+process into the \ide we can reduce the impact of the interruption. Also, because the developer never leaves 
 the context of his work, we hope that the effects of this interruption will be minimal.
 
 Integrating into the \ide has other benefits too. The \ide is the environment where the code lives. By taping into
 this resource we can get a lot more information about what the developer what to review. For example, suppose
-he wants to select a method for review. If that method is tightly couple with another one, than we can suggest that
-he include that method as well. Also, the developer never leaves the context. He can very easily go back to code
+he wants to select a method for review. If that method is tightly coupled with another one, than we can suggest that
+he includes that method as well. Also, the developer never leaves the context. He can very easily go back to the code
 to decide whether some snippet of code would be relevant or not to the reviewer.
 
-Another advantage is that we can submit discrete notification when a review has been received. This, again,
+Another advantage is that we can use discrete notifications when a review has been received. This, again,
 reduces the distraction and makes it a lot easier to see what the review is about. By presenting the result of 
 the review in the \ide the developer can see it in context. This makes it a lot easier to come back in the context
-of the review and make sense of the comments.
+of the review and make sense of the comments. We are hoping that this will increase the developer's productivity.
 
 \section{Related work}
 
 \section{Software development for crowds}
 
-The main research theme that was explored throughout this project is whether software development is suitable for the crowds. \textit{Are there any software development micro-tasks which can be successfully accomplished in reasonably short time by the crowds?}
+The main research theme that was explored throughout this project is whether software development is suitable for the crowds. \textit{Are there any software development micro-tasks which can be successfully accomplished in reasonably short time by specialized crowds?}
 
 These tasks would need to take into consideration the main issue with crowdsourced tasks, that is, the lack of context. By the very nature of these short lived tasks workers cannot know the scope of the entire project. This poses severe limitations on task size since they have to be complete enough to offer the minimum amount of context for the work to be tractable, but must not be so large as to exceed the definition of micro-tasks. Deviations in any of the two conflicting constraints would make the task unattractive to workers.
 
-We identified three activities that have a high chance of being crowdsourced.
+We have identified three activities that have a high chance of being crowdsourced.
 
-\textbf{Code reviews}. In a usual code review, the author of the code selects a list of code snippets that he wants reviewed and then sends them to a list of reviewers. Reviewers usually consist of people working on the same project, since they have the most knowledge about the system particularities. They spend time going through the code both in isolation and together in a meeting. A list of issues is compiled at the end of the meeting. 
+\textbf{Code reviews}. In a usual code review, the author of the code selects a number of code snippets that he wants reviewed and then sends them to a list of reviewers. Reviewers usually consist of people working on the same project, since they have the most knowledge about the system particularities. They spend time going through the code both separately and together, in a meeting. A list of issues is compiled at the end of the meeting. 
 The usual outcomes of a code review are defect detection, design and code improvement, alternative solutions and dissemination of knowledge inside the team. 
 
 Therefore code reviews seem to represent a natural choice for crowdsourcing since they are usually performed by a team of people and the outcome represents the accumulated knowledge of these individuals. However, in terms of review outcomes, crowdsourced code reviews would provide value only to those outcomes that do not require great context. This means that tasks such as defect detection, high level design improvements and general issues that deal with the mapping of requirements to code would not pose good candidates. 
 
-On the other hand, crowds could be used to catch trivial and beginner mistakes. By deferring these issues, more value can be obtained from inside code reviews. Project colleagues would not waste time on these simple issues any more and could better dedicate their time and knowledge to finding high level issues that involve knowledge of the problem domain and implementation history. 
+On the other hand, crowds could be used to catch trivial and beginner mistakes. By deferring these issues, more value can be obtained from inside code reviews. Project colleagues would not waste time on these simple issues any more and could better dedicate their time and knowledge to finding high level issues that involve knowledge of the problem domain and implementation. 
 
-\textbf{Tests}. The crowd could be asked to write tests for different software entities such as methods or classes. Such a task could prove suitable since there are standardized, almost mechanical procedures to writing tests. For methods, the crowd could provide black box tests, by making use of the method contract, or white box tests, by making use of the method's control and data flow. For classes, the crowd would create a composition of method tests together with class contract tests. 
+\textbf{Tests}. The crowd could be asked to write tests for different software entities such as methods or classes. Such a task could prove suitable since there are standardized, almost mechanical procedures to writing tests. For methods, the crowd could provide black box tests, by making use of the method contract, or white box tests, by making use of the method's control and data flow. For classes, the crowd would create a composition of methods that tests the class' interface. 
 
 However, there are drawbacks and limitations to this kind of task. Tests would require some documentation of method and class contracts. The code under test may have dependencies that require to be stubbed away. High level requirement validation tests cannot be produced due to lack of context. 
 
-\textbf{Code transformations on request}. There are a series of tedious program transformations, both refactorings and behaviour changing transformations that are tedious enough to warrant automation but require too much domain knowledge to warrant automation. On one hand, developer time would be wasted on these mechanical tasks. On the other hand, the effort required to automatize them makes it intractable to apply to many, short lived transformations. 
+\textbf{Code transformations on request}. There are a series of tedious program transformations, both refactorings and behaviour changing transformations that are tedious enough to warrant automation but require too much domain knowledge to warrant automation. On one hand, developer time would be wasted on these mechanical tasks. On the other, the effort required to automatize them makes it intractable to apply to many, short lived transformations. 
 
-Examples on the refactoring side could be loop transformations for parallel execution, task boundary identification for parallel execution, code rewriting for better readability, etc. On the behaviour changing side, we can remind transformations such as introducing the visitor pattern to a large hierarchy or changing the code from using a certain library to another.
+Examples on the refactoring side could be loop transformations and task boundary identification for parallel execution, code rewriting for better readability, etc. On the behavior changing side, we can remind transformations such as introducing the visitor pattern to a large hierarchy or changing the code from using a certain library to another.
 
 There are of course drawbacks and difficulties with this approach. Some tasks could require much more context information than the requester anticipated. The requester will have to inspect all proposed code changes which would annihilate part of the advantage of deferring work to somebody else.
 
@@ -147,13 +148,13 @@ From these three candidates for software development micro-tasks we chose to ded
 \label{sec:crowds}
 
 One of the main challenges was finding the appropriate crowd to conduct the code review. One of the
-first options was the Amazon Mechanical Turk. The main problem with this platform is the lack of
-qualified workers. Code Reviewing is a very technical process that requires a large amount of knowledge.
+first options was the Amazon Mechanical Turk platform. The main problem with this platform is the lack of
+qualified workers. Code reviewing is a very technical process that requires a large amount of knowledge.
 We needed to aim for a platform where we were guaranteed to have the right audience.
 
 Mechanical Turk tasks tend to be very simple and require only minimal knowledge and cognitive
 skills. During one experiment we asked a technical question about JavaScript. Out of the 10 hits,
-9 were complete in 7 days. Of those 9 tasks, only 4 useful and most of them were incomplete. This partly 
+9 were completed in 7 days. Of those 9 tasks, only 4 were useful and most of them were incomplete. This partly 
 shows that the Mechanical Turk platform is ill-suited for tasks that require specialized knowledge.
 
 Services such as eLance\footnote{\url{http://www.elance.com}} and oDesk\footnote{\url{http://www.odesk.com}}
@@ -163,26 +164,26 @@ The requester then chooses a winner and then work on the project can start. This
 we are looking for. We needed a system where you can post your task and workers would select the
 task and complete it for a predetermined amount.
 
-StackOverflow\footnote{\url{http://www.stackoverflow.com}} allow uses to post questions and get
+StackOverflow\footnote{\url{http://www.stackoverflow.com}} allow users to post questions and get
 answers. The service is larger than most social Q\&A and technical forums. With a median answer time 
 of 11 minutes and a very active user user base \cite{Mamykina2011} it makes a good candidate for a
-platform to run the experiment. StackOverflow is part of a network of sites (StackExchange\footnote{\url{http://www.stackexchange.com}} that follow the same modes. One of them, \emph{Code
+platform to run the experiments. StackOverflow is part of a network of sites, (StackExchange\footnote{\url{http://www.stackexchange.com}} that follow the same modes. One of them, \emph{Code
 Review Stack Exchange}\footnote{\url{http://codereview.stackexchange.com}} is based around the
-concept of concept of code review. It is this platform that we have used to test our protype.
+concept of code review. It is this platform that we have used to test our prototype.
 
-\section{Stackexchange code review characteristics}
-\section{Interface with StackExchange}
+\section{Stack Exchange code review characteristics}
+\section{Interface with Stack Exchange}
 
 \section{Selecting code snippets}
 
- The first step that the programmer must undergo when composing a code review is of course choosing the code snippets that she desires to be reviewed. The programmer must be able to compose several code snippets that together paint an overall picture of the concept they want to portray. For example snippets could range from lines of code, to loops, to whole classes and packages.
+ The first step that the programmer must undergo when composing a code review is, of course, choosing the code snippets that she desires to be reviewed. The programmer must be able to compose several code snippets that together paint an overall picture of the concept they want to portray. For example snippets could range from lines of code, to loops, to whole classes and packages.
 
  \croder allows the programmer to easily choose snippets from many places in the \ide. The reasoning behind this is that if a resource contains or points to code, \croder should be able to transform it into a snippet. Figure \ref{fig:snippetSelection} shows  various resources which \croder can convert to code snippets, such as random editor selections, fields, methods and whole classes. As can be seen, resources originate from diverse views.
 
  In order to track what snippets have been added to the review so far, a view is provided that holds each snippet. Figure \ref{fig:snippetViewer} illustrates this concept.
  
  %TODO fix section reference
- With today's \croder the decision on the code snippets that are to be reviewed falls solely on the responsibility of the programmer. The \nameref{sec:future} section describes a technique which offers suggestions on other possible snippets based on the current ones.
+ With today's \croder, the decision on the code snippets that are to be reviewed falls solely on the responsibility of the programmer. The \nameref{sec:future} section describes a technique which offers suggestions on other possible snippets based on the current ones.
  
 \begin{figure}[hbt]
 	\centering
@@ -201,8 +202,8 @@ concept of concept of code review. It is this platform that we have used to test
 \section{Crowd sourced peer review creation}
 
 For creating of the task we chose to implement a wizard. One of the main features is that you can ask
-for \emph{structured} code review. The user can select a criteria under which code review should be
-performed (performance, design, readability etc.). This helps reviews in keeping a focus on a given task.
+for a \emph{structured} code review. The user can select a criteria under which code review should be
+performed (performance, design, readability etc.). This helps reviewers in keeping a focus on a given task.
 Also, to make it easier for them to understand the code, we allow the users to add a small note regarding
 the purpose and content of each code snippet. The code snippets are selected directly from the IDE.
 
@@ -241,8 +242,7 @@ In time, the programmer creates many reviews as she seeks to improve herself and
 
 \croder keeps track of current and past reviews. Moreover, for each review it fetches the associated replies. Figure~\ref{fig:reviewBrowser} illustrates the Review Browser. The left pane shows the review titles while the right pane shows the replies for the currently selected review.
 
-%TODO fix section reference
-Section~\ref{sec:future} illustrates several features which can enhance the tool's capabilities via review management.
+Section~\nameref{sec:future} illustrates several features which can enhance the tool's capabilities via review management.
 
 \begin{figure}[hbt]
 	\centering
@@ -255,12 +255,12 @@ Section~\ref{sec:future} illustrates several features which can enhance the tool
 
 \section{Sketches}
 
-Based on user interview study, we start to draw some initial sketches of workflow. At the beginning of 
-drawing sketches, we focus on interface simplification. Many interviewee mentioned that it is a really 
-hard time at the beginning of learning code specially for designers, architects or other students --
-because they do not have any professional education background of computer science or coding. So 
-based on simplification principle, we hide many features on main menu, make it more user-friendly and 
-still have consistency and hierarchy between different features (see Figure~\ref{fig:sketches}).
+Based on user interview study, we started to draw some initial sketches of the workflow. At the beginning of 
+drawing the sketches, we focused simplifying the interface. Many interviewees mentioned that they have a really 
+hard time beginning to learn code.  This is especially true for designers, architects etc. --
+because they do not have any professional education background in computer science or programming. So,
+based on the simplification principle, we hide many features in main menu, make it more user-friendly and 
+still have consistency and a hierarchy between different features (see Figure~\ref{fig:sketches}).
 
 \begin{figure}[hbt]
 	\includegraphics[width=\columnwidth]{sketch1.jpg}
@@ -269,12 +269,12 @@ still have consistency and hierarchy between different features (see Figure~\ref
 \label{fig:sketches}
 \end{figure}
 
-After Showing these initial sketches to our interviewees, we got feedback about layout and interface 
+After showing these initial sketches to our interviewees, we got feedback about layout and interface 
 graphic hierarchy. Based on these feedbacks, we developed a new interface for our program 
-(Figure~\ref{fig:new interface}). Using metaphor method, the interface is like a hand-made leather 
-cover notebook. This interface can recall user’s memory of using notebook to take note in class, in 
-the meantime, make first time user specially user without background of coding quickly familiar with 
-program.
+(Figure~\ref{fig:newinterface}). Using the metaphor method, the interface is like a hand-made leather 
+cover notebook. This interface can recall the user’s memory of using notebook to take notes in class.
+This can make first time users, especially user without background in programming, to quickly become
+familiar with programming.
 
 \begin{figure*}[hbt]
 \begin{center}
@@ -287,17 +287,16 @@ program.
 \label{fig:newinterface}
 \end{figure*}
 
-
 \section{Future Work}
 \label{sec:future}
 
 Future work can be done in several directions.
 
-The only platform currently used by \croder is Stackexchange code review due to reasons such as familiarity with the platform, constant activity and most importantly, it represents a crowd that is accustomed to the code review task type.
+The only platform currently used by \croder is StackExchange Code Review due to reasons such as: familiarity with the platform, constant activity and most importantly, it represents a crowd that is accustomed to the code review task type.
 Future work in this regard would see \croder gain adapters for other platforms such as eLance or oDesk. On one hand, these platforms have mature APIs and sandboxed testing environments. On the other hand their crowds are not accustomed to micro-tasks.
 
 %TODO fix section reference
-Indeed, as was stated in section~\ref{sec:crowds}, eLance and oDesk crowds perform software outsourcing. Their tasks range from days to months and the compensation from tens to thousands of dollars. If we are to utilize these crowds then we shall have to experiment and see if we can get them accustomed to the micro-tasks of crowdsourcing. This implies that we will have to effectively teach the crowd. We shall have to start with oversized tasks and progressively decrease them in size and scope. We shall have to experiment with task size and compensation amount in order to find the sweet spots.
+Indeed, as it was stated in section~\nameref{sec:crowds}, eLance and oDesk crowds perform software outsourcing. Their tasks range from days to months and the compensation from tens to thousands of dollars. If we are to utilize these crowds then we shall have to experiment and see if we can get them accustomed to the crowdsourcing micro-tasks. This implies that we will have to effectively teach the crowd. We shall have to start with oversized tasks and progressively decrease them in size and scope. We shall have to experiment with task size and compensation amount in order to find the sweet spots.
 
 Automatic evaluation of crowdsourced reviews is also problematic. One cannot simply generate random code snippets of different size and complexity. Code snippets have to have a coherent story behind them otherwise the required specialized workers will not engage in their review.
 
