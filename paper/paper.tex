@@ -76,7 +76,6 @@ breaklinks=true,
     \email{syuan20@illinois.edu}
 }
 
-
 \begin{document}
 
 \maketitle
@@ -85,6 +84,26 @@ breaklinks=true,
 \section{Why integrate reviews into the IDE}
 \section{Related work}
 \section{Selecting code snippets}
+
+\section{Crowds for software development}
+
+One of the main challenges was finding the appropriate crowd to conduct the code review. One of the
+first options was the Amazon Mechanical Turk. The main problem with this platform is the lack of
+qualified workers. Code Reviewing is a very technical process that requires a large amount of knowledge.
+We needed to aim for a platform where we were guaranteed to have the right audience.
+
+Mechanical Turk tasks tend to be very simple and require only minimal knowledge and cognitive
+skills. During one experiment we asked a technical question about JavaScript. Out of the 10 hits,
+9 were complete in 7 days. This partly shows that the Mechanical Turk platform is ill-suited for tasks
+that require a lot of specialized knowledge.
+
+Services such as eLance\footnote{\url{http://www.elance.com}} and oDesk\footnote{\url{http://www.odesk.com}}
+employ a crowd to complete programming tasks. But unlike typical crowd sourcing platforms, is it
+an offer based system. The requester posts the description for a task and workers bid to complete it.
+The requester then chooses a winner and then work on the project can start. This system is not what
+we are looking for. We needed a system where you can post your task and workers would select the
+task and complete it for a predetermined amount.
+
 \section{Stackexchange code review characteristics}
 \section{Interface with StackExchange}
 \section{Review management in the IDE}
