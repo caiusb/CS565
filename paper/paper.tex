@@ -12,6 +12,7 @@
 \usepackage{url}      % llt: nicely formatted URLs
 \usepackage{nameref}
 \usepackage{xspace}
+\usepackage{array}
 
 % llt: Define a global style for URLs, rather that the default one
 \makeatletter
@@ -271,11 +272,13 @@ Section~\nameref{sec:future} illustrates several features which can enhance the 
 
 \section{Preliminary user study}
 
-\begin{table*}
+\begin{table*}[hbt]
 	\begin{center}
-	\begin{tabular}{| p{3cm} || p{4cm} | p{4cm} | p{4cm} |}
+	\begin{tabular}{| m{3cm} || p{4cm} | p{4cm} | p{4cm} |}
 	\hline
-	& Primary User & Secondary User & Tertiary User \\ \hline \hline
+	& \begin{center}Primary User\end{center} & 
+		\begin{center}Secondary User\end{center} & 
+		\begin{center}Tertiary User\end{center} \\ \hline \hline
 	\textbf{Pseudoname} & Ben & Kyle & Karla \\ \hline
 	\textbf{Education} & PhD Student & MFA Graduate & MBA Student \\ \hline
 	\textbf{Type} & Pragmatic & Opportunistic & Exploratory \\ \hline
@@ -293,7 +296,7 @@ Section~\nameref{sec:future} illustrates several features which can enhance the 
 		Majored in Business \\ \hline
 	\textbf{Pair programming experience} & Java, C, C++, Matlab etc. & Adobe ActionScript, HTML/CSS,
 		Proce55ing, Java & Visual Basic, Mathematica \\ \hline
-	\textbf{Three Most frequent sites they use when they are programming} & GitHub, StackOverflow, Codeguru &
+	\textbf{Three most frequent sites they use when they are programming} & GitHub, StackOverflow, Codeguru &
 		Google, StackOverflow, Open Processing & Google, eHow, Quora \\ \hline
 	\textbf{Goal} & Find related info; Find an optimized process or algorithm & Find related info; Find previous
 		Q\&A that may help his problem & Find source code; Looking for someone who can answer her
