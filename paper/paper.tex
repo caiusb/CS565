@@ -125,7 +125,8 @@ concept of concept of code review. It is this platform that we have used to test
 
  In order to track what snippets have been added to the review so far, a view is provided that holds each snippet. Figure \ref{fig:snippetViewer} illustrates this concept.
  
- With today's \croder the decision on the code snippets that are to be reviewed falls solely on the responsibility of the programmer. Section \ref{sec:future} describes a technique which offers suggestions on other possible snippets based on the current ones.
+ %TODO fix section reference
+ With today's \croder the decision on the code snippets that are to be reviewed falls solely on the responsibility of the programmer. Section~\ref{sec:future} describes a technique which offers suggestions on other possible snippets based on the current ones.
  
 \begin{figure}[hbt]
 	\centering
@@ -186,11 +187,19 @@ review. Clicking on the marker will bring up the review task associated with it.
 
 \section{Review management in the IDE}
 
-With time, the programmer creates many reviews as she seeks to improve herself and her code. She may also wish to keep certain reviews for future reference. 
+In time, the programmer creates many reviews as she seeks to improve herself and her code. She may also wish to keep certain reviews for future reference. 
 
-\croder keeps track of current and past reviews. Moreover, for each review it fetches 
+\croder keeps track of current and past reviews. Moreover, for each review it fetches the associated replies. Figure~\ref{fig:reviewBrowser} illustrates the Review Browser. The left pane shows the review titles while the right pane shows the replies for the currently selected review.
 
-future: responding, migration
+%TODO fix section reference
+Section~\ref{sec:future} illustrates several features which can enhance the tool's capabilities via review management.
+
+\begin{figure}[hbt]
+	\centering
+	\includegraphics[scale=0.3]{reviewBrowser.png}
+\caption{Viewing code snippets}
+\label{fig:snippetViewer}
+\end{figure}
 
 \section{Preliminary user study}
 \section{Sketches}
