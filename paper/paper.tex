@@ -91,6 +91,31 @@ breaklinks=true,
 
 \section{Software development for crowds}
 
+The main research theme that was explored throughout this project is whether software development is suitable for the crowds. \textit{Are there any software development micro-tasks which can be successfully accomplished in reasonably short time by the crowds?}
+
+These tasks would need to take into consideration the main issue with crowdsourced tasks, that is, the lack of context. By the very nature of these short lived tasks workers cannot know the scope of the entire project. This poses severe limitations on task size since they have to be complete enough to offer the minimum amount of context for the work to be tractable, but must not be so large as to exceed the definition of micro-tasks. Deviations in any of the two conflicting constraints would make the task unattractive to workers.
+
+We identified three activities that have a high chance of being crowdsourced.
+
+\textbf{Code reviews}. In a usual code review, the author of the code selects a list of code snippets that he wants reviewed and then sends them to a list of reviewers. Reviewers usually consist of people working on the same project, since they have the most knowledge about the system particularities. They spend time going through the code both in isolation and together in a meeting. A list of issues is compiled at the end of the meeting. 
+The usual outcomes of a code review are defect detection, design and code improvement, alternative solutions and dissemination of knowledge inside the team. 
+
+Therefore code reviews seem to represent a natural choice for crowdsourcing since they are usually performed by a team of people and the outcome represents the accumulated knowledge of these individuals. However, in terms of review outcomes, crowdsourced code reviews would provide value only to those outcomes that do not require great context. This means that tasks such as defect detection, high level design improvements and general issues that deal with the mapping of requirements to code would not pose good candidates. 
+
+On the other hand, crowds could be used to catch trivial and beginner mistakes. By deferring these issues, more value can be obtained from inside code reviews. Project colleagues would not waste time on these simple issues any more and could better dedicate their time and knowledge to finding high level issues that involve knowledge of the problem domain and implementation history. 
+
+\textbf{Tests}. The crowd could be asked to write tests for different software entities such as methods or classes. Such a task could prove suitable since there are standardized, almost mechanical procedures to writing tests. For methods, the crowd could provide black box tests, by making use of the method contract, or white box tests, by making use of the method's control and data flow. For classes, the crowd would create a composition of method tests together with class contract tests. 
+
+However, there are drawbacks and limitations to this kind of task. Tests would require some documentation of method and class contracts. The code under test may have dependencies that require to be stubbed away. High level requirement validation tests cannot be produced due to lack of context. 
+
+\textbf{Code transformations on request}. There are a series of tedious program transformations, both refactorings and behaviour changing transformations that are tedious enough to warrant automation but require too much domain knowledge to warrant automation. On one hand, developer time would be wasted on these mechanical tasks. On the other hand, the effort required to automatize them makes it intractable to apply to many, short lived transformations. 
+
+Examples on the refactoring side could be loop transformations for parallel execution, task boundary identification for parallel execution, code rewriting for better readability, etc. On the behaviour changing side, we can remind transformations such as introducing the visitor pattern to a large hierarchy or changing the code from using a certain library to another.
+
+There are of course drawbacks and difficulties with this approach. Some tasks could require much more context information than the requester anticipated. The requester will have to inspect all proposed code changes which would annihilate part of the advantage of deferring work to somebody else.
+
+From these three candidates for software development micro-tasks we chose to dedicate our efforts on providing support for code reviews. This seems like a natural starting point due to its social characteristics. From the three potential tasks, code reviews require the least amount of specialized, focused knowledge which should make them attractive to a wider audience and could potentially be of most value to the programmer. The latter justification pertains to the fact that tests and code transformations are of modest educational value to the programmer while code reviews aid in self improvement. 
+
 \section{Crowds for software development}
 One of the main challenges was finding the appropriate crowd to conduct the code review. One of the
 first options was the Amazon Mechanical Turk. The main problem with this platform is the lack of
