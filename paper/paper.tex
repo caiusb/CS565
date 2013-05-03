@@ -52,7 +52,7 @@ breaklinks=true,
 \newcommand\tabhead[1]{\small\textbf{#1}}
 
 \newcommand{\croder}{\textsc{Croder }}
-\newcommand{\IDE}{\emph{IDE }}
+\newcommand{\ide}{\emph{IDE }}
 \newcommand{\eclipse}{\emph{Eclipse }}
 
 
@@ -169,7 +169,7 @@ concept of concept of code review. It is this platform that we have used to test
 
  The first step that the programmer must undergo when composing a code review is of course choosing the code snippets that she desires to be reviewed. The programmer must be able to compose several code snippets that together paint an overall picture of the concept they want to portray. For example snippets could range from lines of code, to loops, to whole classes and packages.
 
- \croder allows the programmer to easily choose snippets from many places in the \IDE. The reasoning behind this is that if a resource contains or points to code, \croder should be able to transform it into a snippet. Figure \ref{fig:snippetSelection} shows  various resources which \croder can convert to code snippets, such as random editor selections, fields, methods and whole classes. As can be seen, resources originate from diverse views.
+ \croder allows the programmer to easily choose snippets from many places in the \ide. The reasoning behind this is that if a resource contains or points to code, \croder should be able to transform it into a snippet. Figure \ref{fig:snippetSelection} shows  various resources which \croder can convert to code snippets, such as random editor selections, fields, methods and whole classes. As can be seen, resources originate from diverse views.
 
  In order to track what snippets have been added to the review so far, a view is provided that holds each snippet. Figure \ref{fig:snippetViewer} illustrates this concept.
  
@@ -295,9 +295,9 @@ Automatic evaluation of crowdsourced reviews is also problematic. One cannot sim
 
 Relating to code snippets, \croder currently leaves code snippet selection solely in the hands of the programmer. Unfortunately, while collecting the code to be reviewed, the programmer may miss essential snippets that complete the story of the review. We propose a semi automated approach in which \croder would suggest a least amount of additional snippets in order to have a more complete review. There are different solutions we can utilize in order to achieve this goal such as a metric based approach: a dependency and coupling analysis can be performed on the selected code snippets in order to find outside potential snippets that would minimize certain metrics.
 
-In terms of the current implementation, particular code reviews are tied to only one \IDE installation. The feature to share and access the review results with other colleague's \IDE's would be most welcome.
+In terms of the current implementation, particular code reviews are tied to only one \ide installation. The feature to share and access the review results with other colleague's \ide's would be most welcome.
 
-Last but not least, code reviews represent only one possible software development task that can be crowdsourced. We identified several more, such as testing or on demand code transformations. In order to fully bring the knowledge of the crowds into the \IDE, \croder will have to learn how to crowdsource many more tasks, starting with the ones previously mentioned.
+Last but not least, code reviews represent only one possible software development task that can be crowdsourced. We identified several more, such as testing or on demand code transformations. In order to fully bring the knowledge of the crowds into the \ide, \croder will have to learn how to crowdsource many more tasks, starting with the ones previously mentioned.
 
 %expand bullets from presentation slides
 %snippet selector
