@@ -11,6 +11,7 @@
 \usepackage{times}    % comment if you want LaTeX's default font
 \usepackage{url}      % llt: nicely formatted URLs
 
+
 % llt: Define a global style for URLs, rather that the default one
 \makeatletter
 \def\url@leostyle{%
@@ -49,8 +50,12 @@ breaklinks=true,
 % create a shortcut to typeset table headings
 \newcommand\tabhead[1]{\small\textbf{#1}}
 
+\newcommand{\croder}{\textbf{Croder }}
+\newcommand{\IDE}{\textbf{IDE }}
+\newcommand{\eclipse}{\textbf{Eclipse }}
 
-\title{Croder \\ Bringing the Knowledge of the Crowds into the IDE}
+
+\title{Croder: Bringing the Knowledge of the Crowds into the IDE}
 \author{Semih Okur \and Mihai Codoban \and Caius Brindescu \and Kyungho Lee \and Shuo Yuan}
 \numberofauthors{5}
 \author{
@@ -83,10 +88,8 @@ breaklinks=true,
 \section{Introduction}
 \section{Why integrate reviews into the IDE}
 \section{Related work}
-\section{Selecting code snippets}
 
 \section{Crowds for software development}
-
 One of the main challenges was finding the appropriate crowd to conduct the code review. One of the
 first options was the Amazon Mechanical Turk. The main problem with this platform is the lack of
 qualified workers. Code Reviewing is a very technical process that requires a large amount of knowledge.
@@ -113,6 +116,17 @@ concept of concept of code review. It is this platform that we have used to test
 
 \section{Stackexchange code review characteristics}
 \section{Interface with StackExchange}
+
+\section{Selecting code snippets}
+
+ The first step that the programmer must undergo when composing a code review is of course choosing the code snippets that she desires to be reviewed. The programmer must be able to compose several code snippets that together paint an overall picture of the concept they want to portray. For example snippets could range from lines of code, to loops, to whole classes and packages.
+
+ \croder allows the programmer to easily choose snippets from many places in the \IDE. The reasoning behind this is that if a resource contains or points to code, \croder should be able to transform it into a snippet. Figure \ref{fig:snippetSelection} shows  various resources which \croder can convert to code snippets, such as random editor selections, fields, methods and whole classes. As can be seen, resources originate from diverse views.
+
+ In order to track what snippets have been added to the review so far, a view is provided that holds each snippet. Figure \ref{fig:snippetViewer} illustrates this concept.
+ 
+ With today's \croder the decision on the code snippets that are to be reviewed falls solely on the responsibility of the programmer. Section \ref{sec:future} describes a technique which offers suggestions on other possible snippets based on the current ones.
+ 
 \section{Review management in the IDE}
 
 \section{Crowd sourced peer review creation}
